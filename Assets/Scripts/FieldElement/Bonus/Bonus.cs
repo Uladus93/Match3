@@ -1,8 +1,14 @@
-
 public class Bonus : FieldElement
 {
+    private BonusType _bonusType;
+
+    public Bonus(BonusType bonusType)
+    {
+        _bonusType = bonusType;
+    }
+
     private void Awake()
     {
-        _type = TypesOfFieldElements.Bonus;
+        _elementType = TypesOfFieldElements.Bonus;
     }
 }
