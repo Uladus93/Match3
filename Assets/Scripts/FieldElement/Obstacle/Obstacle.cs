@@ -1,11 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class Obstacle : FieldElement
 {
+    private ObstacleType _obstacleType;
+
+    public Obstacle(ObstacleType obstacleType)
+    {
+        _obstacleType = obstacleType;
+    }
+
     private void Awake()
     {
-        _type = TypesOfFieldElements.Obstacle;
+        _elementType = TypesOfFieldElements.Obstacle;
     }
 }
