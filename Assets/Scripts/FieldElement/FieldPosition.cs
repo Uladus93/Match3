@@ -1,6 +1,4 @@
-using UnityEngine;
-
-public class FieldPosition
+public struct FieldPosition
 {
     private int _row;
     private int _column;

@@ -1,4 +1,4 @@
-public enum TypeOfTile 
+public enum TilesState 
 {
     open,
     closed
