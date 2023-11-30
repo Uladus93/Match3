@@ -6,12 +6,14 @@ public class EntryPoint : MonoBehaviour
     [SerializeField] private Material _backgroundMaterial;
     [SerializeField] private GameObject _tilePrefab;
     [SerializeField] private GameObject _canvas;
+    private StateMachine _stateMachine;
 
-    private void Start()
+    private void Awake()
     {
         DontDestroyOnLoad(gameObject);
-        SceneManager.LoadScene("BaseScene");
-        TileFactory tileFactory = new TileFactory(_tilePrefab);
-        Field field = new Field(5, 7, _canvas, tileFactory);
+        _stateMachine = new StateMachine();
+        _stateMachine.AddState(new InitializationState());
+        //add other states here.
+        _stateMachine.TransitionToState(typeof(InitializationState));
     }
 }
