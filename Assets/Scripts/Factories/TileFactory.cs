@@ -9,7 +9,14 @@ public class TileFactory
         _prefab = prefab;
     }
 
-    public Tile CreateTile(int x, int y, Transform parent)
+    public Tile CreateTile(int x, int y)
+    {
+        Tile tile = new Tile(TilesState.open, false);
+        tile.SetPrefab(GameObject.Instantiate(_prefab, new Vector3(x, y, 0), Quaternion.identity), this);
+        return tile;
+    }
+
+    public Tile CreateTile2(int x, int y, Transform parent)
     {
         Tile tile = new Tile(TilesState.open, false);
         tile.SetPrefab(GameObject.Instantiate(_prefab, new Vector3(x, y, 0), Quaternion.identity, parent), this);

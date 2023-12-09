@@ -3,7 +3,12 @@ guid: f5ceabb972da2a14bbda6dcd2819b2b6
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - _loadingSlider: {instanceID: 0}
+  - _background: {instanceID: 0}
+  - _tilePrefab: {instanceID: 0}
+  - _loadingCanvas: {fileID: 481651738060556710, guid: 92ceed127e0753b4ea5d3dd4c10b29fa, type: 3}
+  - _loadingImage: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

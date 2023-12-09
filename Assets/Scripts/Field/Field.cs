@@ -22,6 +22,7 @@ public class Field
     {
         _columnCount = column;
         _rowCount = row;
+        _tiles = new Tile[column, row];
         _canvas = canvas;
         _factory = tileFactory;
     }
@@ -32,7 +33,7 @@ public class Field
         {
             for (int j = 0; j < _columnCount; j++)
             {
-                _tiles[j, i] = _factory.CreateTile(j, i, _canvas.transform);
+                _tiles[j, i] = _factory.CreateTile2(j, i, _canvas.transform);
             }
         }
     }
