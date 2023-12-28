@@ -1,8 +1,10 @@
 public class PauseState : IGameState
 {
-    public PauseState()
+    private StateMachine _stateMachine;
+    public StateMachine StateMachine { get; }
+    public PauseState(StateMachine stateMachine)
     {
-
+        _stateMachine = stateMachine;
     }
 
     public void Enter()

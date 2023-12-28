@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class EntryPoint : MonoBehaviour
 {
@@ -13,11 +12,12 @@ public class EntryPoint : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
-
         _stateMachine = new StateMachine();
 
-        _stateMachine.AddState(new InitializationState( _background, _tilePrefab, _loadingCanvas));
-        //add other states here.
+        _stateMachine.AddState(new InitializationState( _stateMachine, _tilePrefab, _loadingCanvas));
+        _stateMachine.AddState(new MenuState(_stateMachine));
+        _stateMachine.AddState(new LoadLevelState(_stateMachine));
+        _stateMachine.AddState(new PauseState(_stateMachine));
         _stateMachine.TransitionToState(typeof(InitializationState));
     }
 }

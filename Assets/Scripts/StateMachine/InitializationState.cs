@@ -5,61 +5,45 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System;
 using Unity.VisualScripting;
-using System.Linq;
+using UnityEditor.SearchService;
+
 
 public class InitializationState : IGameState
 {
-    private GameObject _background;
+    private StateMachine _stateMachine;
     private GameObject _tilePrefab;
     private Tile _tile;
     private Tile _tile2;
     private Transform _transform;
     private GameObject _loadingCanvas;
-    private SceneLoader _sceneLoader;
 
-    private Scene _scene;
-    public InitializationState(GameObject background, GameObject tilePrefab, GameObject loadingCanvas)
+    public StateMachine StateMachine { get { return _stateMachine; } private set { } }
+    public InitializationState(StateMachine stateMachine, GameObject tilePrefab, GameObject loadingCanvas)
     {
-        _background = background;
+        _stateMachine = stateMachine;
         _tilePrefab = tilePrefab;
         _loadingCanvas = loadingCanvas;
     }
 
     public void Enter()
     {
-        ViewLoadingScene();
-        InitializeBackground();
-        InitializeTiles();
-        InitializeCanvas();
+        LoadLoadingScene();
     }
 
     public void Exit()
     {
-        throw new System.NotImplementedException();
-    }
-
-    public void ViewLoadingScene()
-    {
-        _sceneLoader = new SceneLoader();
-        _sceneLoader.LoadSceneAsync(this, _loadingCanvas);
-        _sceneLoader.SetProgressBarValue(this, 0.1f);
-        _sceneLoader.SetStateText(this, "Initialize scenes.");
-    }
-
-    private void InitializeBackground()
-    {
         
     }
 
-    private void InitializeTiles()
+    private void LoadLoadingScene()
     {
-        
-    }
+        var loadScene = SceneManager.LoadSceneAsync("LoadingScene");
 
-    private void InitializeCanvas()
-    {
-        
+        loadScene.completed += scene =>
+        {
+            var loadingSceneManager = GameObject.Instantiate(_loadingCanvas).GetComponent<SceneLoadManager>().GetComponent<SceneLoadManager>();
+            loadingSceneManager.SetProgressBarValue(this, 0);
+            loadingSceneManager.LoadSceneAsync(this, "MenuScene");
+        };
     }
-
-    
 }
