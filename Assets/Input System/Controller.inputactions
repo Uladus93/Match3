@@ -1,0 +1,46 @@
+{
+    "name": "Controller",
+    "maps": [
+        {
+            "name": "PlayMode",
+            "id": "10eff6ae-4d66-4c46-9cb5-72c9bf4b11d5",
+            "actions": [
+                {
+                    "name": "ButtonUsing",
+                    "type": "Button",
+                    "id": "a213e088-8d5c-4d4b-aa3a-5df09c73ecfe",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "86cef0c7-de7a-479d-91e4-d8c5f8aa88a3",
+                    "path": "<Mouse>/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse",
+                    "action": "ButtonUsing",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Mouse",
+            "bindingGroup": "Mouse",
+            "devices": [
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}

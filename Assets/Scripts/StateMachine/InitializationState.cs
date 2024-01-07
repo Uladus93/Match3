@@ -1,28 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System;
-using Unity.VisualScripting;
 using UnityEditor.SearchService;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.ResourceManagement.ResourceProviders;
+using System.Net;
+using System.Threading.Tasks;
 
 
 public class InitializationState : IGameState
 {
     private StateMachine _stateMachine;
-    private GameObject _tilePrefab;
-    private Tile _tile;
-    private Tile _tile2;
-    private Transform _transform;
-    private GameObject _loadingCanvas;
+    private static AsyncOperationHandle<SceneInstance> _sceneLoadOpHandle;
 
     public StateMachine StateMachine { get { return _stateMachine; } private set { } }
-    public InitializationState(StateMachine stateMachine, GameObject tilePrefab, GameObject loadingCanvas)
+    public InitializationState(StateMachine stateMachine)
     {
         _stateMachine = stateMachine;
-        _tilePrefab = tilePrefab;
-        _loadingCanvas = loadingCanvas;
     }
 
     public void Enter()
@@ -37,13 +34,12 @@ public class InitializationState : IGameState
 
     private void LoadLoadingScene()
     {
-        var loadScene = SceneManager.LoadSceneAsync("LoadingScene");
+        _sceneLoadOpHandle = Addressables.LoadSceneAsync("LoadingScene", activateOnLoad: true);
+        _sceneLoadOpHandle.Completed += OnCanvasLoadComplete;
+    }
 
-        loadScene.completed += scene =>
-        {
-            var loadingSceneManager = GameObject.Instantiate(_loadingCanvas).GetComponent<SceneLoadManager>().GetComponent<SceneLoadManager>();
-            loadingSceneManager.SetProgressBarValue(this, 0);
-            loadingSceneManager.LoadSceneAsync(this, "MenuScene");
-        };
+    private void OnCanvasLoadComplete(AsyncOperationHandle<SceneInstance> asyncOperationHandle)
+    {
+        _stateMachine.TransitionToState(typeof(MenuState));
     }
 }
