@@ -7,8 +7,8 @@ using UnityEngine;
 /// <param name="row"></param>
 public class Field
 {
-    private byte _columnCount;
-    private byte _rowCount;
+    private const byte _columnCount = 7;
+    private const byte _rowCount = 7;
     public int ColumnCount { get { return _columnCount; } private set { } }
     public int RowCount { get { return _rowCount; } private set { } }
 
@@ -18,12 +18,9 @@ public class Field
 
     private TileFactory _factory;
     
-    public Field(byte column, byte row, GameObject canvas, TileFactory tileFactory)
+    public Field(TileFactory tileFactory)
     {
-        _columnCount = column;
-        _rowCount = row;
-        _tiles = new Tile[column, row];
-        _canvas = canvas;
+        _tiles = new Tile[_columnCount, _rowCount];
         _factory = tileFactory;
     }
 
@@ -33,7 +30,7 @@ public class Field
         {
             for (int j = 0; j < _columnCount; j++)
             {
-                _tiles[j, i] = _factory.CreateTile2(j, i, _canvas.transform);
+                _tiles[j, i] = _factory.CreateTile(-130 + j * 40, -130 + i * 40);
             }
         }
     }

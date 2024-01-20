@@ -152,10 +152,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5ceabb972da2a14bbda6dcd2819b2b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _loadingSlider: {fileID: 1056741610490759327, guid: 65e7f068d1267fe4ab789ea081d8b576, type: 3}
-  _background: {fileID: 4495530723147036195, guid: 34a146d3aece69e40aff497c8121a6eb, type: 3}
-  _tilePrefab: {fileID: 313835959737396678, guid: 2990af3cbcc702e488366519d7fea5cf, type: 3}
-  _loadingCanvas: {fileID: 3104549949462784118, guid: 92ceed127e0753b4ea5d3dd4c10b29fa, type: 3}
 --- !u!4 &520140549
 Transform:
   m_ObjectHideFlags: 0

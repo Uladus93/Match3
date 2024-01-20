@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 public class InitializationState : IGameState
 {
     private StateMachine _stateMachine;
-    private static AsyncOperationHandle<SceneInstance> _sceneLoadOpHandle;
+    private  AsyncOperationHandle<SceneInstance> _sceneLoadOpHandle;
 
     public StateMachine StateMachine { get { return _stateMachine; } private set { } }
     public InitializationState(StateMachine stateMachine)
@@ -29,7 +29,7 @@ public class InitializationState : IGameState
 
     public void Exit()
     {
-        
+        Addressables.Release(_sceneLoadOpHandle);
     }
 
     private void LoadLoadingScene()

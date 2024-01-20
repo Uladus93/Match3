@@ -32,6 +32,46 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8184cb1d6bb4f274bb56604bb9b8228e
+    m_Address: SpiceTokenImage
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5011532fa5505c24499bfeec05a8792b
+    m_Address: SandTokenImage
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c5765a62999d0954a8add5e8f1c253c3
+    m_Address: ArmyTokenImage
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9800e2065c09e064fb4c3c202f69fd83
+    m_Address: TechnoTokenImage
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fa12628372cd96e46beac9c8b1b1f079
+    m_Address: WormTokenImage
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ae3c9b666d445d144a7daf417a9f07cf
+    m_Address: EnemyTokenImage
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bc779c40a9864cc48a1229889ea68347
+    m_Address: FieldImage
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3901d1d302990b14382e223246ce5b8c
+    m_Address: Tile
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: a9dc95c84f6f6824bbb0327422372029, type: 2}
   m_SchemaSet:
