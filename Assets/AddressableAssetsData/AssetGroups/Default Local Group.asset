@@ -42,23 +42,13 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: c5765a62999d0954a8add5e8f1c253c3
-    m_Address: ArmyTokenImage
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 9800e2065c09e064fb4c3c202f69fd83
-    m_Address: TechnoTokenImage
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fa12628372cd96e46beac9c8b1b1f079
     m_Address: WormTokenImage
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ae3c9b666d445d144a7daf417a9f07cf
-    m_Address: EnemyTokenImage
+    m_Address: SoldersTokenImage
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -69,6 +59,16 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3901d1d302990b14382e223246ce5b8c
     m_Address: Tile
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 259051ef89f61d447a7df44cc1419f4d
+    m_Address: BaitTokenImage
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 269aab9a43eec9f4fbcd14dc58ed3b7d
+    m_Address: WaterTokenImage
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

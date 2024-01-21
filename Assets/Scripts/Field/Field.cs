@@ -16,12 +16,15 @@ public class Field
 
     private GameObject _canvas;
 
-    private TileFactory _factory;
+    private TileFactory _tilefactory;
+    private ElementOfFieldFactory _elementfactory;
     
-    public Field(TileFactory tileFactory)
+    
+    public Field(TileFactory tileFactory, ElementOfFieldFactory elementOfFieldFactory)
     {
         _tiles = new Tile[_columnCount, _rowCount];
-        _factory = tileFactory;
+        _tilefactory = tileFactory;
+        _elementfactory = elementOfFieldFactory;
     }
 
     public void GenerateField()
@@ -30,7 +33,8 @@ public class Field
         {
             for (int j = 0; j < _columnCount; j++)
             {
-                _tiles[j, i] = _factory.CreateTile(-130 + j * 40, -130 + i * 40);
+                _tiles[j, i] = _tilefactory.CreateTile(-40 + j * 12, -40 + i * 12);
+                _elementfactory.CreateElement(this, _tiles[j, i]);
             }
         }
     }

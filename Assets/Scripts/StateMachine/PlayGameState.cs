@@ -11,6 +11,7 @@ public class PlayGameState : IGameState
     private StateMachine _stateMachine;
     private const string _sceneName = "GamePlayScene";
     private TileFactory _tileFactory;
+    private ElementOfFieldFactory _elementOfFieldFactory;
     private Field _gameField;
     
     public StateMachine StateMachine => throw new System.NotImplementedException();
@@ -37,7 +38,20 @@ public class PlayGameState : IGameState
         AsyncOperationHandle<GameObject> tileOpHandle = Addressables.LoadAssetAsync<GameObject>("Tile");
         await tileOpHandle.Task;
         _tileFactory = new TileFactory(tileOpHandle.Result, field);
-        _gameField = new Field(_tileFactory);
+        AsyncOperationHandle<GameObject> sandOpHandle = Addressables.LoadAssetAsync<GameObject>("SandTokenImage");
+        AsyncOperationHandle<GameObject> spiceOpHandle = Addressables.LoadAssetAsync<GameObject>("SpiceTokenImage");
+        AsyncOperationHandle<GameObject> wormOpHandle = Addressables.LoadAssetAsync<GameObject>("WormTokenImage");
+        AsyncOperationHandle<GameObject> soldersOpHandle = Addressables.LoadAssetAsync<GameObject>("SoldersTokenImage");
+        AsyncOperationHandle<GameObject> waterOpHandle = Addressables.LoadAssetAsync<GameObject>("WaterTokenImage");
+        AsyncOperationHandle<GameObject> baitOpHandle = Addressables.LoadAssetAsync<GameObject>("BaitTokenImage");
+        await sandOpHandle.Task;
+        await spiceOpHandle.Task;
+        await wormOpHandle.Task;
+        await soldersOpHandle.Task;
+        await waterOpHandle.Task;
+        await baitOpHandle.Task;
+        _elementOfFieldFactory = new ElementOfFieldFactory(sandOpHandle.Result, spiceOpHandle.Result, wormOpHandle.Result, soldersOpHandle.Result, waterOpHandle.Result, baitOpHandle.Result);
+        _gameField = new Field(_tileFactory, _elementOfFieldFactory);
         _gameField.GenerateField();
     }
 
