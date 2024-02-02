@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TileFactory
 {
@@ -11,10 +12,11 @@ public class TileFactory
         _parent = parent;
     }
 
-    public Tile CreateTile(int x, int y)
+    public Tile CreateTile(byte x, byte y)
     {
-        Tile tile = new Tile(TilesState.open, false);
-        tile.SetPrefabOfTile(GameObject.Instantiate(_prefab, _parent.transform.position + new Vector3(x, y, 0), Quaternion.identity, _parent.transform), this);
+        Tile tile = new Tile(TilesState.open, false, x, y);
+        GameObject tileObject = GameObject.Instantiate(_prefab, _parent.transform.position + new Vector3(-35 + x * 12, -35 + y * 12, 0), Quaternion.identity, _parent.transform);
+        tile.SetPrefabOfTile(tileObject, this);
         return tile;
     }
 }

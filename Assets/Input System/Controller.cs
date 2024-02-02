@@ -28,24 +28,24 @@ public partial class @Controller: IInputActionCollection2, IDisposable
             ""id"": ""10eff6ae-4d66-4c46-9cb5-72c9bf4b11d5"",
             ""actions"": [
                 {
-                    ""name"": ""ButtonUsing"",
+                    ""name"": ""TokenInterpretator"",
                     ""type"": ""Button"",
                     ""id"": ""a213e088-8d5c-4d4b-aa3a-5df09c73ecfe"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
                     ""id"": ""86cef0c7-de7a-479d-91e4-d8c5f8aa88a3"",
-                    ""path"": ""<Mouse>/press"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Mouse"",
-                    ""action"": ""ButtonUsing"",
+                    ""action"": ""TokenInterpretator"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -68,7 +68,7 @@ public partial class @Controller: IInputActionCollection2, IDisposable
 }");
         // PlayMode
         m_PlayMode = asset.FindActionMap("PlayMode", throwIfNotFound: true);
-        m_PlayMode_ButtonUsing = m_PlayMode.FindAction("ButtonUsing", throwIfNotFound: true);
+        m_PlayMode_TokenInterpretator = m_PlayMode.FindAction("TokenInterpretator", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -130,12 +130,12 @@ public partial class @Controller: IInputActionCollection2, IDisposable
     // PlayMode
     private readonly InputActionMap m_PlayMode;
     private List<IPlayModeActions> m_PlayModeActionsCallbackInterfaces = new List<IPlayModeActions>();
-    private readonly InputAction m_PlayMode_ButtonUsing;
+    private readonly InputAction m_PlayMode_TokenInterpretator;
     public struct PlayModeActions
     {
         private @Controller m_Wrapper;
         public PlayModeActions(@Controller wrapper) { m_Wrapper = wrapper; }
-        public InputAction @ButtonUsing => m_Wrapper.m_PlayMode_ButtonUsing;
+        public InputAction @TokenInterpretator => m_Wrapper.m_PlayMode_TokenInterpretator;
         public InputActionMap Get() { return m_Wrapper.m_PlayMode; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -145,16 +145,16 @@ public partial class @Controller: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_PlayModeActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_PlayModeActionsCallbackInterfaces.Add(instance);
-            @ButtonUsing.started += instance.OnButtonUsing;
-            @ButtonUsing.performed += instance.OnButtonUsing;
-            @ButtonUsing.canceled += instance.OnButtonUsing;
+            @TokenInterpretator.started += instance.OnTokenInterpretator;
+            @TokenInterpretator.performed += instance.OnTokenInterpretator;
+            @TokenInterpretator.canceled += instance.OnTokenInterpretator;
         }
 
         private void UnregisterCallbacks(IPlayModeActions instance)
         {
-            @ButtonUsing.started -= instance.OnButtonUsing;
-            @ButtonUsing.performed -= instance.OnButtonUsing;
-            @ButtonUsing.canceled -= instance.OnButtonUsing;
+            @TokenInterpretator.started -= instance.OnTokenInterpretator;
+            @TokenInterpretator.performed -= instance.OnTokenInterpretator;
+            @TokenInterpretator.canceled -= instance.OnTokenInterpretator;
         }
 
         public void RemoveCallbacks(IPlayModeActions instance)
@@ -183,6 +183,6 @@ public partial class @Controller: IInputActionCollection2, IDisposable
     }
     public interface IPlayModeActions
     {
-        void OnButtonUsing(InputAction.CallbackContext context);
+        void OnTokenInterpretator(InputAction.CallbackContext context);
     }
 }

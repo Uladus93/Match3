@@ -8,7 +8,7 @@ public class Enemy : FieldElement
         _enemyType = enemyType;
     }
 
-    private void Awake()
+    public Enemy()
     {
         _elementType = TypesOfFieldElements.Enemy;
     }

@@ -10,7 +10,7 @@ public class Bonus : FieldElement
         _bonusType = bonusType;
     }
 
-    private void Awake()
+    public Bonus()
     {
         _elementType = TypesOfFieldElements.Bonus;
     }

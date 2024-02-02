@@ -28,37 +28,37 @@ public class ElementOfFieldFactory
             if (rnd >= 0 && rnd < 100)
             {
                 Token sandElement = new Token(TokenType.sand);
-                GameObject sandObject = GameObject.Instantiate(_sandPrefab, parent.PrefabOfTileInstance.transform.position, Quaternion.identity, parent.PrefabOfTileInstance.transform);
+                GameObject sandObject = GameObject.Instantiate(_sandPrefab, parent.TileObject.transform.position, Quaternion.identity, parent.TileObject.transform);
                 parent.SetElementOfField(sandElement, sandObject);
             }
             else if (rnd >= 100 && rnd < 200)
             {
                 Token spiceElement = new Token(TokenType.spice);
-                GameObject spiceObject = GameObject.Instantiate(_spicePrefab, parent.PrefabOfTileInstance.transform.position, Quaternion.identity, parent.PrefabOfTileInstance.transform);
+                GameObject spiceObject = GameObject.Instantiate(_spicePrefab, parent.TileObject.transform.position, Quaternion.identity, parent.TileObject.transform);
                 parent.SetElementOfField(spiceElement, spiceObject);
             }
             else if (rnd >= 200 && rnd < 300)
             {
                 Enemy wormElement = new Enemy(EnemyType.worm);
-                GameObject wormObject = GameObject.Instantiate(_wormPrefab, parent.PrefabOfTileInstance.transform.position, Quaternion.identity, parent.PrefabOfTileInstance.transform);
+                GameObject wormObject = GameObject.Instantiate(_wormPrefab, parent.TileObject.transform.position, Quaternion.identity, parent.TileObject.transform);
                 parent.SetElementOfField(wormElement, wormObject);
             }
             else if (rnd >= 300 && rnd < 400)
             {
                 Enemy soldersElement = new Enemy(EnemyType.solders);
-                GameObject soldersObject = GameObject.Instantiate(_soldersPrefab, parent.PrefabOfTileInstance.transform.position, Quaternion.identity, parent.PrefabOfTileInstance.transform);
+                GameObject soldersObject = GameObject.Instantiate(_soldersPrefab, parent.TileObject.transform.position, Quaternion.identity, parent.TileObject.transform);
                 parent.SetElementOfField(soldersElement, soldersObject);
             }
             else if (rnd >= 400 && rnd < 500)
             {
                 Bonus waterElement = new Bonus(BonusType.water);
-                GameObject waterObject = GameObject.Instantiate(_waterPrefab, parent.PrefabOfTileInstance.transform.position, Quaternion.identity, parent.PrefabOfTileInstance.transform);
+                GameObject waterObject = GameObject.Instantiate(_waterPrefab, parent.TileObject.transform.position, Quaternion.identity, parent.TileObject.transform);
                 parent.SetElementOfField(waterElement, waterObject);
             }
             else if (rnd >= 500 && rnd <= 600)
             {
                 Bonus baitElement = new Bonus(BonusType.bait);
-                GameObject baitObject = GameObject.Instantiate(_baitPrefab, parent.PrefabOfTileInstance.transform.position, Quaternion.identity, parent.PrefabOfTileInstance.transform);
+                GameObject baitObject = GameObject.Instantiate(_baitPrefab, parent.TileObject.transform.position, Quaternion.identity, parent.TileObject.transform);
                 parent.SetElementOfField(baitElement, baitObject);
             }
         }

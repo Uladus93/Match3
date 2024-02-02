@@ -1,12 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
-using UnityEngine.ResourceManagement.ResourceProviders;
-using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
@@ -26,7 +19,6 @@ public class MenuManager : MonoBehaviour
 
     private void Start()
     {
-
         _playButton.onClick.AddListener(() => _stateMachine.TransitionToState(typeof(PlayGameState)));
         _settingsButton.onClick.AddListener(() => OpenCloseGameObject(_settingsWindow));
         _topListButton.onClick.AddListener(() => OpenCloseGameObject(_topListWindow));

@@ -10,7 +10,7 @@ public class Token : FieldElement
         _tokenType = tokenType;
     }
 
-    private void Awake()
+    public Token()
     {
         _elementType = TypesOfFieldElements.Token;
     }
