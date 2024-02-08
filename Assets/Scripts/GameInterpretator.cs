@@ -39,7 +39,7 @@ public class GameInterpretator : MonoBehaviour
 
     public void SetActionOnCancelClick()
     {
-        _controller.PlayMode.TokenInterpretator.canceled += _gameField.GenerateMatchCanceled;
+        _controller.PlayMode.TokenInterpretator.canceled += _gameField.MatchManager.GenerateMatchCanceled;
     }
 
 
@@ -47,7 +47,7 @@ public class GameInterpretator : MonoBehaviour
     {
         if (Mouse.current.leftButton.isPressed)
         {
-            _gameField.GenerateMatchPerformed();
+            _gameField.MatchManager.GenerateMatchPerformed();
         }
     }
 }

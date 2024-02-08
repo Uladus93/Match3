@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.WSA;
 
 public class ElementOfFieldFactory
 {
@@ -22,7 +21,7 @@ public class ElementOfFieldFactory
 
     public void CreateElement(System.Object caller, Tile parent)
     {
-        if (caller.GetType() == typeof(Field))
+        if (caller.GetType() == typeof(FieldObjectGenerator))
         {
             float rnd = Random.Range(0, 600);
             if (rnd >= 0 && rnd < 100)

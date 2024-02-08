@@ -11,6 +11,8 @@ public class PlayGameState : IGameState
     private TileFactory _tileFactory;
     private ElementOfFieldFactory _elementOfFieldFactory;
     private Field _gameField;
+    private PlayerSessionData _playerSessionData;
+
     
     public StateMachine StateMachine => throw new System.NotImplementedException();
     public PlayGameState(StateMachine stateMachine)
@@ -32,6 +34,9 @@ public class PlayGameState : IGameState
         AsyncOperationHandle<Sprite> fieldOpHandle = Addressables.LoadAssetAsync<Sprite>("FieldImage");
         await fieldOpHandle.Task;
         GameObject field = GameObject.Find("Field Image");
+        GameObject aqua = GameObject.Find("Aqua Text (TMP)");
+        GameObject score = GameObject.Find("Score Text (TMP)");
+        GameObject baits = GameObject.Find("Baits Text (TMP)");
         field.GetComponent<Image>().sprite = fieldOpHandle.Result;
         AsyncOperationHandle<GameObject> tileOpHandle = Addressables.LoadAssetAsync<GameObject>("Tile");
         await tileOpHandle.Task;
@@ -51,10 +56,9 @@ public class PlayGameState : IGameState
         await baitOpHandle.Task;
         await lineOpHandle.Task;
         _elementOfFieldFactory = new ElementOfFieldFactory(sandOpHandle.Result, spiceOpHandle.Result, wormOpHandle.Result, soldersOpHandle.Result, waterOpHandle.Result, baitOpHandle.Result);
-        GameObject canvas = GameObject.Find("Canvas");
         GameObject tilesLine = GameObject.Instantiate(lineOpHandle.Result, new Vector3(0, 0, 0), Quaternion.identity, field.transform);
-        _gameField = new Field(_tileFactory, _elementOfFieldFactory, tilesLine, field);
-        _gameField.GenerateField();
+        _playerSessionData = new PlayerSessionData(aqua, score, baits);
+        _gameField = new Field(_tileFactory, _elementOfFieldFactory, tilesLine, field, _playerSessionData);
         GameObject interpretator = GameObject.Find("Interpretator");
         interpretator.GetComponent<GameInterpretator>().SetField(_gameField);
     }

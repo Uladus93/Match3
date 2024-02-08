@@ -8,10 +8,6 @@ public class Token : FieldElement
     public Token(TokenType tokenType)
     {
         _tokenType = tokenType;
-    }
-
-    public Token()
-    {
         _elementType = TypesOfFieldElements.Token;
     }
 }

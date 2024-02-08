@@ -12,9 +12,11 @@ public class Tile
     private const float _koefficientOfSelectedTile = 1.2f;
     
     public GameObject TileObject { get { return _tileObject;} private set { } }
+    public TilesState TileType { get { return _tileType; } private set { } }
     public GameObject FieldElement { get { return _fieldElement; } private set { } }
     public FieldElement ElementOfField { get { return _elementOfField; } private set { } }
     public FieldPosition FieldPosition { get { return _fieldPosition; } private set { } }
+    public bool IsEmpty { get { return _isEmpty; } private set { } }
     public bool IsSelected { get { return _isSelected; } private set { } }
     public Tile(TilesState type, bool isEmpty, byte row, byte column)
     {
@@ -45,14 +47,6 @@ public class Tile
         }
     }
 
-    public void FillTile()
-    {
-        if (_tileType == TilesState.open)
-        {
-            _isEmpty = false;
-        }
-    }
-
     public void ChangeTileState()
     {
         
@@ -62,6 +56,8 @@ public class Tile
     {
         _fieldElement = prefab;
         _elementOfField = element;
+        _isEmpty = false;
+        _isSelected = false;
     }
 
     public void ChangeElementOfField()
@@ -81,7 +77,7 @@ public class Tile
         _fieldElement.transform.localScale /= _koefficientOfSelectedTile;
     }
 
-    public void SetPosition(Field field, byte x, byte y)
+    public void SetPosition(byte x, byte y)
     {
         
     }
