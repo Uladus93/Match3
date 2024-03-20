@@ -1,19 +1,17 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Controls;
-using static UnityEditor.Timeline.TimelinePlaybackControls;
-using static UnityEngine.InputSystem.InputAction;
 
 public class GameInterpretator : MonoBehaviour
 {
     private Controller _controller;
     private Field _gameField;
+    private sbyte _pause;
 
     private void Awake()
     {
         _controller = new Controller();
+        _pause = 0;
+
     }
 
     private void OnEnable()
@@ -42,12 +40,16 @@ public class GameInterpretator : MonoBehaviour
         _controller.PlayMode.TokenInterpretator.canceled += _gameField.MatchManager.GenerateMatchCanceled;
     }
 
-
     private void Update()
     {
-        if (Mouse.current.leftButton.isPressed)
+        if (Mouse.current.leftButton.isPressed && _pause == 0)
         {
             _gameField.MatchManager.GenerateMatchPerformed();
         }
+    }
+
+    public void ChangePauseValue(sbyte value)
+    {
+         _pause += value;
     }
 }

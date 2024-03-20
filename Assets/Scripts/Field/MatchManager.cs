@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.InputSystem.InputAction;
 using UnityEngine.InputSystem;
-using TMPro;
-using UnityEngine.UIElements;
 
 public class MatchManager
 {
@@ -41,26 +39,35 @@ public class MatchManager
                     Enemy enemy = _parentField.Tiles[tilePosition.Column, tilePosition.Row].ElementOfField as Enemy;
                     if (enemy.EnemyType == EnemyType.worm && _playerSessionData.BaitsScore > 0)
                     {
+                        _parentField.Tiles[tilePosition.Column, tilePosition.Row].SelectTile();  
+                        _match.Add(_parentField.Tiles[tilePosition.Column, tilePosition.Row]);
+                    }
+                    else if (enemy.EnemyType == EnemyType.solders && _playerSessionData.RocketsScore > 0)
+                    {
                         _parentField.Tiles[tilePosition.Column, tilePosition.Row].SelectTile();
                         _match.Add(_parentField.Tiles[tilePosition.Column, tilePosition.Row]);
                     }
                 }
                 else if (_match.Count == 0 && 
                     isCursorNearCenterOfTile() && 
-                    _parentField.Tiles[tilePosition.Column, tilePosition.Row].ElementOfField.GetType() == typeof(Token))
+                    _parentField.Tiles[tilePosition.Column, tilePosition.Row].ElementOfField.GetType() != typeof(Enemy) &&
+                    _parentField.Tiles[tilePosition.Column, tilePosition.Row].TileType == TilesState.open)
                 {
                     _parentField.Tiles[tilePosition.Column, tilePosition.Row].SelectTile();
                     _match.Add(_parentField.Tiles[tilePosition.Column, tilePosition.Row]);
                     _lineChain.transform.position = _match[0].TileObject.transform.position;
                     _lineChain.GetComponent<LineRenderer>().positionCount = 1;
                     _lineChain.GetComponent<LineRenderer>().SetPosition(0, _match[0].TileObject.transform.position);
-                    _lineChain.GetComponent<LineRenderer>().startWidth = 2.0f;
-                    _lineChain.GetComponent<LineRenderer>().endWidth = 2.0f;
+                    _lineChain.GetComponent<LineRenderer>().startWidth = 0.4f;
+                    _lineChain.GetComponent<LineRenderer>().endWidth = 0.4f;
                 }
-                else if (_match.Count > 0 && isCursorNearCenterOfTile() && !_parentField.Tiles[tilePosition.Column, tilePosition.Row].IsSelected
-                    && _parentField.Tiles[tilePosition.Column, tilePosition.Row].ElementOfField.GetType() != typeof(Enemy)
+                else if (_match.Count > 0 && 
+                    isCursorNearCenterOfTile()
+                    && !_parentField.Tiles[tilePosition.Column, tilePosition.Row].IsSelected
+                    && _parentField.Tiles[tilePosition.Column, tilePosition.Row].ElementOfField.GetType() == _match[0].ElementOfField.GetType()
                     && MathF.Abs(_match[^1].FieldPosition.Column - tilePosition.Column) < 2 && MathF.Abs(_match[^1].FieldPosition.Row - tilePosition.Row) < 2
-                    && _match[0].ElementOfField.ElementType != TypesOfFieldElements.Enemy)
+                    && _match[0].ElementOfField.ElementType != TypesOfFieldElements.Enemy
+                    && _parentField.Tiles[tilePosition.Column, tilePosition.Row].TileType == TilesState.open)
                 {
                     _parentField.Tiles[tilePosition.Column, tilePosition.Row].SelectTile();
                     _match.Add(_parentField.Tiles[tilePosition.Column, tilePosition.Row]);
@@ -109,19 +116,39 @@ public class MatchManager
     {
         if (_match.Count == 1 && _match[0].ElementOfField.ElementType == TypesOfFieldElements.Enemy)
         {
-            _playerSessionData.RecountAqua(-1);
-            _playerSessionData.RecountBaits(-1);
-            _match[0].ClearTile();
-            _parentField.FieldObjectGenerator.CreateOneObject(_match[0]);
+            Enemy enemy = _match[0].ElementOfField as Enemy;
+            if (enemy.EnemyType == EnemyType.worm)
+            {
+                _playerSessionData.RecountBaits(-1);
+                _playerSessionData.RecountWater(-1);
+            }
+            else if (enemy.EnemyType == EnemyType.solders)
+            {
+                _playerSessionData.RecountRockets(-1);
+            }
+            
+            _match[0].TryClearTile();
+            _match[0].UnselectTile();
+            if (_match[0].IsEmpty)
+            {
+                _parentField.FieldObjectGenerator.CreateOneObject(_match[0]);
+            }
+            
             _match.RemoveAt(0);
         }
-        else 
+        else if (_match.Count > 2)
         {
             MakeMatch();
+            DetectEnemy();
             CountEmptyTiles();
             _parentField.FieldObjectGenerator.CreateSomeObjects(_emptyTiles);
             _emptyTiles.Clear();
         }
+        else
+        {
+            MakeMatch();
+        }
+
     }
 
     private void MakeMatch()
@@ -131,16 +158,20 @@ public class MatchManager
             byte count = (byte)_match.Count;
             for (byte i = 0; i < count; i++)
             {
+                DeterminateEnemyNeighborth(_match[0]);
                 if (_match[0].ElementOfField.ElementType == TypesOfFieldElements.Bonus)
                 {
                     Bonus bonus = _match[0].ElementOfField as Bonus;
                     switch (bonus.BonusType)
                     {
                         case BonusType.water:
-                            _playerSessionData.RecountAqua(2);
+                            _playerSessionData.RecountWater(bonus.Count);
                             break;
                         case BonusType.bait:
-                            _playerSessionData.RecountBaits(1);
+                            _playerSessionData.RecountBaits(bonus.Count);
+                            break;
+                        case BonusType.rocket:
+                            _playerSessionData.RecountRockets(bonus.Count);
                             break;
                         default:
                             break;
@@ -148,7 +179,6 @@ public class MatchManager
                 }
                 else if (_match[0].ElementOfField.ElementType == TypesOfFieldElements.Token)
                 {
-                    DeterminateEnemyNeighborth(_match[0]);
                     Token token = _match[0].ElementOfField as Token;
                     switch (token.TokenType)
                     {
@@ -162,12 +192,12 @@ public class MatchManager
                             break;
                     }
                 }
-                _match[0].ClearTile();
+                _match[0].TryClearTile();
                 _match.RemoveAt(0);
                 _lineChain.GetComponent<LineRenderer>().positionCount = 0;
             }
 
-            _playerSessionData.RecountAqua(-1);
+            _playerSessionData.RecountWater(count - 4);
         }
         else
         {
@@ -236,25 +266,99 @@ public class MatchManager
             
             for (int y = yMinIndex; y <= yMaxIndex; y++)
             {
-                Debug.Log($"{x}_{y}");
                 if (x == tile.FieldPosition.Column && y == tile.FieldPosition.Column)
                 {
                     continue;
                 }
                 else if (_parentField.Tiles[x, y].TileType == TilesState.closed)
                 {
-                    _parentField.Tiles[x, y].ClearTile();
-                    Debug.Log("Tile is open.");
+                    _parentField.Tiles[x, y].TryClearTile();
                     continue;
                 }
-                else if (_parentField.Tiles[x, y].ElementOfField.ElementType == TypesOfFieldElements.Enemy) 
+                else if (_parentField.Tiles[x, y].ElementOfField.GetType() == typeof(Solders)) 
                 {
-                    Enemy enemy = _parentField.Tiles[x, y].ElementOfField as Enemy;
-                    if (enemy.GiveDamage() == 0)
+                    Solders enemy = _parentField.Tiles[x, y]?.ElementOfField as Solders;
+                    if (enemy.GiveDamage() >= 0)
                     {
-                        _parentField.Tiles[x, y].ClearTile();
-                        Debug.Log("Tile is empty.");
-                    } 
+                        _parentField.Tiles[x, y].TryClearTile();
+                    }
+                }
+            }
+        }
+    }
+
+    private void DetectEnemy()
+    {
+        foreach (var tile in _parentField.Tiles)
+        {
+            if (tile != null && tile.ElementOfField.GetType() == typeof(Solders))
+            {
+                Solders enemy = tile.ElementOfField as Solders;
+                enemy.UseStrenght(detectTile());
+
+                Tile detectTile()
+                {
+                    if (tile.TileType == TilesState.open)
+                    {
+                        return tile;
+                    }
+                    else if(tile.TileType == TilesState.closed)
+                    {
+                        byte xMinIndex;
+                        byte xMaxIndex;
+                        byte yMinIndex;
+                        byte yMaxIndex;
+
+                        if (tile.FieldPosition.Column == 0)
+                        {
+                            xMinIndex = 0;
+                            xMaxIndex = 1;
+                        }
+                        else if (tile.FieldPosition.Column == (byte)(_parentField.ColumnCount - 1))
+                        {
+                            xMinIndex = (byte)(_parentField.ColumnCount - 2);
+                            xMaxIndex = (byte)(_parentField.ColumnCount - 1);
+                        }
+                        else
+                        {
+                            xMinIndex = (byte)(tile.FieldPosition.Column - 1);
+                            xMaxIndex = (byte)(tile.FieldPosition.Column + 1);
+                        }
+
+                        if (tile.FieldPosition.Row == 0)
+                        {
+                            yMinIndex = 0;
+                            yMaxIndex = 1;
+                        }
+                        else if (tile.FieldPosition.Row == (byte)(_parentField.ColumnCount - 1))
+                        {
+                            yMinIndex = (byte)(_parentField.RowCount - 2);
+                            yMaxIndex = (byte)(_parentField.RowCount - 1);
+                        }
+                        else
+                        {
+                            yMinIndex = (byte)(tile.FieldPosition.Row - 1);
+                            yMaxIndex = (byte)(tile.FieldPosition.Row + 1);
+                        }
+
+                        for (int x = xMinIndex; x <= xMaxIndex; x++)
+                        {
+
+                            for (int y = yMinIndex; y <= yMaxIndex; y++)
+                            {
+                                if (x == tile.FieldPosition.Column && y == tile.FieldPosition.Column)
+                                {
+                                    continue;
+                                }
+                                else if (_parentField.Tiles[x, y].TileType == TilesState.open && _parentField.Tiles[x, y].ElementOfField.ElementType != TypesOfFieldElements.Enemy)
+                                {
+                                    return _parentField.Tiles[x, y];
+                                }
+                            }
+                        }
+
+                    }
+                    return tile;
                 }
             }
         }

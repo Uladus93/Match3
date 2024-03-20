@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -152,6 +152,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5ceabb972da2a14bbda6dcd2819b2b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _fieldImage: {fileID: 21300000, guid: 69b21835b494f514398364eb2ef3bc77, type: 3}
+  _tile: {fileID: 2821842295875363357, guid: 3901d1d302990b14382e223246ce5b8c, type: 3}
+  _sand: {fileID: 6100983510366326783, guid: 5011532fa5505c24499bfeec05a8792b, type: 3}
+  _spice: {fileID: 2771778798791307461, guid: 8184cb1d6bb4f274bb56604bb9b8228e, type: 3}
+  _worm: {fileID: 4791036674953260170, guid: fa12628372cd96e46beac9c8b1b1f079, type: 3}
+  _solders: {fileID: 9127983917230168241, guid: ae3c9b666d445d144a7daf417a9f07cf, type: 3}
+  _water: {fileID: 7723358070716066580, guid: 269aab9a43eec9f4fbcd14dc58ed3b7d, type: 3}
+  _bait: {fileID: 569299112786162431, guid: 259051ef89f61d447a7df44cc1419f4d, type: 3}
+  _rocket: {fileID: 569299112786162431, guid: dd6c6b6d3cd9bc14e9e78a7ec9376c4d, type: 3}
+  _line: {fileID: 2648449472936254029, guid: 1f21c015fa3389648912d73a463802bf, type: 3}
+  _enemy1: {fileID: 21300000, guid: 8203e1d501c26ed408b33d8d512862e8, type: 3}
+  _enemy2: {fileID: 21300000, guid: b60a1dfaa4357d44ea0bb5a402698259, type: 3}
+  _particles: {fileID: 6315274941694980814, guid: 6dc11c179e71723419e40d44c206fb96, type: 3}
+  _soundManager: {fileID: 0}
 --- !u!4 &520140549
 Transform:
   m_ObjectHideFlags: 0

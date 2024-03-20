@@ -24,7 +24,7 @@ public class Field
     {
         _fieldObjectGenerator = new FieldObjectGenerator(this, tileFactory, elementOfFieldFactory);
         _tiles = new Tile[_columnCount, _rowCount];
-        _tiles = _fieldObjectGenerator.CreateAllField(_tiles);
+        _tiles = _fieldObjectGenerator.CreateAllNewField(_tiles);
         _matchManager = new MatchManager(this, lineChain, playerSessionData);
         _fieldObject = field;
     }

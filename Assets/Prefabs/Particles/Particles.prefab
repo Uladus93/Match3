@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6315274941694980814
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7764421256946941111}
+  - component: {fileID: 1602906615308048451}
+  m_Layer: 0
+  m_Name: Particles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7764421256946941111
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6315274941694980814}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1602906615308048451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6315274941694980814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9edde7a7e4a35564ab6b05c312ecceb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parctilesWater: {fileID: 7917105120408953575, guid: 528a2d372a1d3bf49bd2647310d5feef, type: 3}
+  _parctilesBait: {fileID: 1029844551662786914, guid: d759407121f874941801a9500f1c8ca4, type: 3}
+  _parctilesRocket: {fileID: 6601481642506980047, guid: afe326cb18553574996396192905b43e, type: 3}
+  _parctilesSand: {fileID: 6584504757086777383, guid: 085ab414167a40a41820f9cdc08b7980, type: 3}
+  _parctilesSpice: {fileID: 7767677419853011596, guid: 7b5e0db25425f1846b01242744df779b, type: 3}
+  _parctilesWorm: {fileID: 2524131393376109062, guid: f2262185f9118004fb1b45d53f1d29c4, type: 3}
+  _parctilesSolders: {fileID: 2200467982995488177, guid: 2c57f0cb06620924eb21e243b11102c0, type: 3}
+  _soundWater: {fileID: -5323249524377298156, guid: 528a2d372a1d3bf49bd2647310d5feef, type: 3}
+  _soundBait: {fileID: -6220789785051851690, guid: d759407121f874941801a9500f1c8ca4, type: 3}
+  _soundRocket: {fileID: 7364620949032118626, guid: afe326cb18553574996396192905b43e, type: 3}
+  _soundSand: {fileID: 6168353300451805324, guid: 085ab414167a40a41820f9cdc08b7980, type: 3}
+  _soundSpice: {fileID: 1595972169076867108, guid: 7b5e0db25425f1846b01242744df779b, type: 3}
+  _soundWorm: {fileID: 6180603004194215964, guid: f2262185f9118004fb1b45d53f1d29c4, type: 3}
+  _soundSolders: {fileID: -2229425552002183452, guid: 2c57f0cb06620924eb21e243b11102c0, type: 3}
+  _soundsToggle: 1

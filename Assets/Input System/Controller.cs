@@ -63,6 +63,17 @@ public partial class @Controller: IInputActionCollection2, IDisposable
                     ""isOR"": false
                 }
             ]
+        },
+        {
+            ""name"": ""TouchScreen"",
+            ""bindingGroup"": ""TouchScreen"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Touchscreen>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
         }
     ]
 }");
@@ -179,6 +190,15 @@ public partial class @Controller: IInputActionCollection2, IDisposable
         {
             if (m_MouseSchemeIndex == -1) m_MouseSchemeIndex = asset.FindControlSchemeIndex("Mouse");
             return asset.controlSchemes[m_MouseSchemeIndex];
+        }
+    }
+    private int m_TouchScreenSchemeIndex = -1;
+    public InputControlScheme TouchScreenScheme
+    {
+        get
+        {
+            if (m_TouchScreenSchemeIndex == -1) m_TouchScreenSchemeIndex = asset.FindControlSchemeIndex("TouchScreen");
+            return asset.controlSchemes[m_TouchScreenSchemeIndex];
         }
     }
     public interface IPlayModeActions

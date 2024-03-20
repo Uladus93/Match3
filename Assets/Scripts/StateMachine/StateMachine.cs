@@ -14,9 +14,9 @@ public class StateMachine
 
     public Dictionary<System.Type, IGameState> States { get { return _states; } private set { } }
 
-    public void AddState(System.Type caller, IGameState state)
+    public void AddState(System.Object caller, IGameState state)
     {
-        if (!_states.ContainsKey(state.GetType()) && caller == typeof(EntryPoint))
+        if (!_states.ContainsKey(state.GetType()) && (caller is IGameState || caller.GetType() == typeof(EntryPoint)))
         {
             _states.Add(state.GetType(), state);
         }

@@ -14,7 +14,7 @@ public class FieldObjectGenerator
         _tilefactory = tileFactory;
         _elementfactory = elementsFactory;
     }
-    public Tile[,] CreateAllField(Tile[,] tiles)
+    public Tile[,] CreateAllNewField(Tile[,] tiles)
     {
         for (byte i = 0; i < _parentField.RowCount; i++)
         {

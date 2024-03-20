@@ -1,5 +1,6 @@
 public enum BonusType
 {
     water,
-    bait
+    bait,
+    rocket
 }
