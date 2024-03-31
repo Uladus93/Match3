@@ -9,13 +9,13 @@ public class Solders : Enemy
 
     public Sprite EnemySprite1 { get { return _enemySprite1; } private set { } }
     public Sprite EnemySprite2 { get { return _enemySprite2; } private set { } }
-    public Solders(EnemyType enemyType, Sprite enemySprite1, Sprite enemySprite2) : base(enemyType)
+    public Solders(EnemyType enemyType, Sprite enemySprite1, Sprite enemySprite2, byte occupationTime, byte soldersNumber) : base(enemyType)
     {
         _enemySprite1 = enemySprite1;
         _enemySprite2 = enemySprite2;
         _isInvulnerable = false;
-        _lives = 3;
-        _strenght = 0;
+        _lives = soldersNumber;
+        _occupationTime = occupationTime;
         _needStrenght = 5;
     }
     public byte GiveDamage()
@@ -30,11 +30,11 @@ public class Solders : Enemy
 
     public void UseStrenght(Tile tile)
     {
-        _strenght++;
-        if (_strenght == _needStrenght)
+        _occupationTime++;
+        if (_occupationTime == _needStrenght)
         {
             tile.CloseTile();
-            _strenght = 0;
+            _occupationTime = 0;
         }
     }
 

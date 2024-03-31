@@ -86,7 +86,7 @@ public class Tile
 
     public void CloseTile()
     {
-        if (!_isEmpty && _tileType == TilesState.open)
+        if (_tileType == TilesState.open)
         {
             _tileType = TilesState.closed;
             _tileObject.GetComponent<SpriteRenderer>().color = Color.red;

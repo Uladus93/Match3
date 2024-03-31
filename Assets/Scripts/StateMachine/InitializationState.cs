@@ -86,9 +86,13 @@ public class InitializationState : IGameState
         _particles = GameObject.Instantiate(_particles, new Vector3(0, 0, 0), Quaternion.identity, _fieldObject.transform);
         _tileFactory = new TileFactory(_tile, _fieldObject, _particles.GetComponent<Particles>(), _soundManager.GetComponent<SoundManager>());
         _tilesLine = GameObject.Instantiate(_line, new Vector3(0, 0, 0), Quaternion.identity, _fieldObject.transform);
-        PlayerSessionData playerSessionData = new PlayerSessionData(_water, _score, _baits, _rockets);
-        playerSessionData.RefreshData();
+        GameObject PlayerScoreJSONData = GameObject.Find("PlayerScore");
+        PlayerSessionData playerSessionData = new PlayerSessionData(_water, _score, _baits, _rockets, PlayerScoreJSONData.GetComponent<PlayerScore>());
         Field gameField = new Field(_tileFactory, _elementOfFieldFactory, _tilesLine, _fieldObject, playerSessionData);
+        PlayerScoreJSONData.GetComponent<PlayerScore>().SetDataForJSON(gameField, playerSessionData);
+        PlayerScoreJSONData.GetComponent<PlayerScore>().LoadGame();
+        //playerSessionData.RefreshData();
+        //gameField.FieldObjectGenerator.CreateAllNewField(gameField.Tiles);
         interpretator.GetComponent<GameInterpretator>().SetField(gameField);
         _shop.AddComponent<Market>();
         _shop.GetComponent<Market>().SetMarketData(interpretator.GetComponent<GameInterpretator>(), playerSessionData);

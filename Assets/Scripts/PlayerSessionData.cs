@@ -4,27 +4,30 @@ using UnityEngine;
 public class PlayerSessionData
 {
     private int _aquaScore;
-    private int _scoreScore;
+    private int _spiceScore;
     private int _baitsScore;
     private int _rocketsScore;
     private GameObject _aqua;
     private GameObject _score;
     private GameObject _baits;
     private GameObject _rockets;
+    private PlayerScore _playerScore;
 
     public TextMeshProUGUI AquaText { get { return _aqua.GetComponent<TextMeshProUGUI>(); } set { } }
     public TextMeshProUGUI ScoreText { get { return _score.GetComponent<TextMeshProUGUI>(); } set { } }
     public TextMeshProUGUI BaitsText { get { return _baits.GetComponent<TextMeshProUGUI>(); } set { } }
+    public TextMeshProUGUI Rockets { get { return _baits.GetComponent<TextMeshProUGUI>(); } set { } }
     public int AquaScore { get { return _aquaScore; } private set { } }
+    public int SpiceScore { get { return _spiceScore; } private set { } }
     public int BaitsScore { get { return _baitsScore; } private set { } }
     public int RocketsScore { get { return _rocketsScore; } private set { } }
-
-    public PlayerSessionData(GameObject aqua, GameObject score, GameObject baits, GameObject rocket)
+    public PlayerSessionData(GameObject aqua, GameObject score, GameObject baits, GameObject rocket, PlayerScore playerScore)
     {
         _aqua = aqua;
         _score = score;
         _baits = baits;
         _rockets = rocket;
+        _playerScore = playerScore;
     }
 
     public void RecountWater(int points)
@@ -35,8 +38,8 @@ public class PlayerSessionData
 
     public void RecountScore(int points)
     {
-        _scoreScore += points;
-        _score.GetComponent<TextMeshProUGUI>().text = $"{_scoreScore}";
+        _spiceScore += points;
+        _score.GetComponent<TextMeshProUGUI>().text = $"{_spiceScore}";
     }
 
     public void RecountBaits(int points)
@@ -54,11 +57,23 @@ public class PlayerSessionData
     public void RefreshData()
     {
         _aquaScore = 10;
-        _scoreScore = 0;
+        _spiceScore = 0;
         _baitsScore = 10;
-        _rocketsScore = 10;
+        _rocketsScore = 15;
         _aqua.GetComponent<TextMeshProUGUI>().text = $"{_aquaScore}";
-        _score.GetComponent<TextMeshProUGUI>().text = $"{_scoreScore}";
+        _score.GetComponent<TextMeshProUGUI>().text = $"{_spiceScore}";
+        _baits.GetComponent<TextMeshProUGUI>().text = $"{_baitsScore}";
+        _rockets.GetComponent<TextMeshProUGUI>().text = $"{_rocketsScore}";
+    }
+
+    public void LoadData()
+    {
+        _aquaScore = _playerScore.PlayerJSONScore._aquaScore;
+        _spiceScore = _playerScore.PlayerJSONScore._spiceScore;
+        _baitsScore = _playerScore.PlayerJSONScore._baitsScore;
+        _rocketsScore = _playerScore.PlayerJSONScore._rocketsScore;
+        _aqua.GetComponent<TextMeshProUGUI>().text = $"{_aquaScore}";
+        _score.GetComponent<TextMeshProUGUI>().text = $"{_spiceScore}";
         _baits.GetComponent<TextMeshProUGUI>().text = $"{_baitsScore}";
         _rockets.GetComponent<TextMeshProUGUI>().text = $"{_rocketsScore}";
     }

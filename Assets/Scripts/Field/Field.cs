@@ -24,7 +24,7 @@ public class Field
     {
         _fieldObjectGenerator = new FieldObjectGenerator(this, tileFactory, elementOfFieldFactory);
         _tiles = new Tile[_columnCount, _rowCount];
-        _tiles = _fieldObjectGenerator.CreateAllNewField(_tiles);
+        //_tiles = _fieldObjectGenerator.CreateAllNewField(_tiles);
         _matchManager = new MatchManager(this, lineChain, playerSessionData);
         _fieldObject = field;
     }
@@ -50,5 +50,10 @@ public class Field
         Vector2 pointOfMaxTile = new(maxX, maxY);
         Tuple<float, float> lengthsWithoutTiles = Tuple.Create(lenghtBeetweenTilesForXAxis, lenghtBeetweenTilesForYAxis);
         return Tuple.Create(pointOfMinTile, pointOfMaxTile, lengthsWithoutTiles);
+    }
+
+    public void LoadFieldFromJSON(string[] jsonTiles)
+    {
+        _tiles = _fieldObjectGenerator.LoadAllFieldFromJSON(_tiles, jsonTiles);
     }
 }
