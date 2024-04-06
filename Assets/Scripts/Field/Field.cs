@@ -37,9 +37,9 @@ public class Field
     /// <returns></returns>
     public Tuple<Vector2, Vector2, Tuple<float, float>> DetectFieldCoordinatesOnTheScreen()
     {
-        Vector3 firstTilePosition = Camera.main.WorldToViewportPoint(_tiles[0, 0].TileObject.transform.position);
-        float secondX = Camera.main.WorldToViewportPoint(_tiles[1, 0].TileObject.transform.position).x;
-        float secondY = Camera.main.WorldToViewportPoint(_tiles[0, 1].TileObject.transform.position).y;
+        Vector3 firstTilePosition = _tiles[0, 0].TileObject.transform.position;
+        float secondX = (_tiles[1, 0].TileObject.transform.position).x;
+        float secondY = (_tiles[0, 1].TileObject.transform.position).y;
         float lenghtBeetweenTilesForXAxis = secondX - firstTilePosition.x;
         float lenghtBeetweenTilesForYAxis = secondY - firstTilePosition.y;
         float minX = firstTilePosition.x - lenghtBeetweenTilesForXAxis / 2;

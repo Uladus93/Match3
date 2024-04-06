@@ -29,23 +29,65 @@ public partial class @Controller: IInputActionCollection2, IDisposable
             ""actions"": [
                 {
                     ""name"": ""TokenInterpretator"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""a213e088-8d5c-4d4b-aa3a-5df09c73ecfe"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Press"",
+                    ""type"": ""Button"",
+                    ""id"": ""638797a6-5963-4ed2-aa8d-e86a30c93d1c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""86cef0c7-de7a-479d-91e4-d8c5f8aa88a3"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""id"": ""d1b1b6c3-07be-4f64-a993-0b97c13dad8e"",
+                    ""path"": ""<Touchscreen>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""TouchScreen"",
+                    ""action"": ""TokenInterpretator"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ca987c6f-6dfc-4447-ae38-9bab2d161526"",
+                    ""path"": ""<Mouse>/position"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Mouse"",
                     ""action"": ""TokenInterpretator"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b459d708-d2a6-44eb-942f-371ebd9fa368"",
+                    ""path"": ""<Touchscreen>/Press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""TouchScreen"",
+                    ""action"": ""Press"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""50289893-4cad-48cf-a84a-b947d28700db"",
+                    ""path"": ""<Mouse>/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse"",
+                    ""action"": ""Press"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -80,6 +122,7 @@ public partial class @Controller: IInputActionCollection2, IDisposable
         // PlayMode
         m_PlayMode = asset.FindActionMap("PlayMode", throwIfNotFound: true);
         m_PlayMode_TokenInterpretator = m_PlayMode.FindAction("TokenInterpretator", throwIfNotFound: true);
+        m_PlayMode_Press = m_PlayMode.FindAction("Press", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -142,11 +185,13 @@ public partial class @Controller: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_PlayMode;
     private List<IPlayModeActions> m_PlayModeActionsCallbackInterfaces = new List<IPlayModeActions>();
     private readonly InputAction m_PlayMode_TokenInterpretator;
+    private readonly InputAction m_PlayMode_Press;
     public struct PlayModeActions
     {
         private @Controller m_Wrapper;
         public PlayModeActions(@Controller wrapper) { m_Wrapper = wrapper; }
         public InputAction @TokenInterpretator => m_Wrapper.m_PlayMode_TokenInterpretator;
+        public InputAction @Press => m_Wrapper.m_PlayMode_Press;
         public InputActionMap Get() { return m_Wrapper.m_PlayMode; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -159,6 +204,9 @@ public partial class @Controller: IInputActionCollection2, IDisposable
             @TokenInterpretator.started += instance.OnTokenInterpretator;
             @TokenInterpretator.performed += instance.OnTokenInterpretator;
             @TokenInterpretator.canceled += instance.OnTokenInterpretator;
+            @Press.started += instance.OnPress;
+            @Press.performed += instance.OnPress;
+            @Press.canceled += instance.OnPress;
         }
 
         private void UnregisterCallbacks(IPlayModeActions instance)
@@ -166,6 +214,9 @@ public partial class @Controller: IInputActionCollection2, IDisposable
             @TokenInterpretator.started -= instance.OnTokenInterpretator;
             @TokenInterpretator.performed -= instance.OnTokenInterpretator;
             @TokenInterpretator.canceled -= instance.OnTokenInterpretator;
+            @Press.started -= instance.OnPress;
+            @Press.performed -= instance.OnPress;
+            @Press.canceled -= instance.OnPress;
         }
 
         public void RemoveCallbacks(IPlayModeActions instance)
@@ -204,5 +255,6 @@ public partial class @Controller: IInputActionCollection2, IDisposable
     public interface IPlayModeActions
     {
         void OnTokenInterpretator(InputAction.CallbackContext context);
+        void OnPress(InputAction.CallbackContext context);
     }
 }

@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 7917105120390249345}
   - component: {fileID: 7917105120390201889}
   - component: {fileID: 2317951271325518213}
+  - component: {fileID: 3091490659701852020}
+  - component: {fileID: 3474382782054755826}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -4724,6 +4726,44 @@ Canvas:
   m_SortingLayerID: -227081767
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!222 &3091490659701852020
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7917105120408953569}
+  m_CullTransparentMesh: 1
+--- !u!114 &3474382782054755826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7917105120408953569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &7917105120408953571
 GameObject:
   m_ObjectHideFlags: 0
@@ -4736,6 +4776,8 @@ GameObject:
   - component: {fileID: 7917105120390249347}
   - component: {fileID: 7917105120390201891}
   - component: {fileID: 5116121892708238291}
+  - component: {fileID: 1924071213975284998}
+  - component: {fileID: 5046302769635876909}
   m_Layer: 0
   m_Name: Bubble
   m_TagString: Untagged
@@ -9430,6 +9472,44 @@ Canvas:
   m_SortingLayerID: -227081767
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!222 &1924071213975284998
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7917105120408953571}
+  m_CullTransparentMesh: 1
+--- !u!114 &5046302769635876909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7917105120408953571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &7917105120408953573
 GameObject:
   m_ObjectHideFlags: 0
@@ -9442,6 +9522,8 @@ GameObject:
   - component: {fileID: 7917105120390249351}
   - component: {fileID: 7917105120390201895}
   - component: {fileID: 5446004489223452235}
+  - component: {fileID: 7703299602346441579}
+  - component: {fileID: 3046670147678357814}
   m_Layer: 0
   m_Name: Flash
   m_TagString: Untagged
@@ -14154,6 +14236,44 @@ Canvas:
   m_SortingLayerID: -227081767
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!222 &7703299602346441579
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7917105120408953573}
+  m_CullTransparentMesh: 1
+--- !u!114 &3046670147678357814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7917105120408953573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &7917105120408953575
 GameObject:
   m_ObjectHideFlags: 0
@@ -14165,6 +14285,8 @@ GameObject:
   - component: {fileID: 7917105120408600263}
   - component: {fileID: 7803110059524617677}
   - component: {fileID: 8021184150430653769}
+  - component: {fileID: 1869057625767892877}
+  - component: {fileID: 6419947743274370333}
   m_Layer: 0
   m_Name: Water Particles
   m_TagString: Untagged
@@ -14191,9 +14313,9 @@ RectTransform:
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7803110059524617677
 MonoBehaviour:
@@ -14230,6 +14352,44 @@ Canvas:
   m_SortingLayerID: 1717538223
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!222 &1869057625767892877
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7917105120408953575}
+  m_CullTransparentMesh: 1
+--- !u!114 &6419947743274370333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7917105120408953575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 62324fb4b3293dc49b344307fbf39a4b, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &7917105120408953579
 GameObject:
   m_ObjectHideFlags: 0
@@ -14242,6 +14402,8 @@ GameObject:
   - component: {fileID: 7917105120390249349}
   - component: {fileID: 7917105120390201893}
   - component: {fileID: 7773495966892977490}
+  - component: {fileID: 6997707612284857999}
+  - component: {fileID: 8291223230154129652}
   m_Layer: 0
   m_Name: Star
   m_TagString: Untagged
@@ -18954,3 +19116,41 @@ Canvas:
   m_SortingLayerID: -227081767
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!222 &6997707612284857999
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7917105120408953579}
+  m_CullTransparentMesh: 1
+--- !u!114 &8291223230154129652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7917105120408953579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1

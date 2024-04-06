@@ -14,7 +14,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioSource _soundWorm;
     [SerializeField] private AudioSource _soundSolders;
     [SerializeField] private AudioSource _openTileSound;
-    [SerializeField] private Toggle _soundToggle;
+    private Toggle _soundToggle;
 
     public void PlayDestroyElementSound(FieldElement element)
     {
@@ -106,5 +106,10 @@ public class SoundManager : MonoBehaviour
         {
             sound.Play();
         }
+    }
+
+    public void SetSoundToggle(GameObject toggle)
+    {
+        _soundToggle = toggle.GetComponent<Toggle>();
     }
 }

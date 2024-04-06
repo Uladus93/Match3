@@ -31,7 +31,7 @@ RenderSettings:
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
   m_HaloTexture: {fileID: 0}
-  m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
+  m_SpotCookie: {fileID: 2800000, guid: 69b21835b494f514398364eb2ef3bc77, type: 3}
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 2095b8ff82280634f87a58a2d84e5722, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -152,7 +152,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5ceabb972da2a14bbda6dcd2819b2b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fieldImage: {fileID: 21300000, guid: 69b21835b494f514398364eb2ef3bc77, type: 3}
   _tile: {fileID: 2821842295875363357, guid: 3901d1d302990b14382e223246ce5b8c, type: 3}
   _sand: {fileID: 6100983510366326783, guid: 5011532fa5505c24499bfeec05a8792b, type: 3}
   _spice: {fileID: 2771778798791307461, guid: 8184cb1d6bb4f274bb56604bb9b8228e, type: 3}
@@ -165,7 +164,7 @@ MonoBehaviour:
   _enemy1: {fileID: 21300000, guid: 8203e1d501c26ed408b33d8d512862e8, type: 3}
   _enemy2: {fileID: 21300000, guid: b60a1dfaa4357d44ea0bb5a402698259, type: 3}
   _particles: {fileID: 6315274941694980814, guid: 6dc11c179e71723419e40d44c206fb96, type: 3}
-  _soundManager: {fileID: 0}
+  _gameArea: {fileID: 864047800556532265, guid: 345b371dcabd2a644943fb68cef36f16, type: 3}
 --- !u!4 &520140549
 Transform:
   m_ObjectHideFlags: 0

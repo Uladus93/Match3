@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class EntryPoint : MonoBehaviour
 {
-    [SerializeField] private Sprite _fieldImage;
     [SerializeField] private GameObject _tile;
     [SerializeField] private GameObject _sand;
     [SerializeField] private GameObject _spice;
@@ -17,6 +16,7 @@ public class EntryPoint : MonoBehaviour
     [SerializeField] private Sprite _enemy1;
     [SerializeField] private Sprite _enemy2;
     [SerializeField] private GameObject _particles;
+    [SerializeField] private GameObject _gameArea;
 
     private ElementOfFieldFactory _elementOfFieldFactory;
     private StateMachine _stateMachine;
@@ -29,7 +29,7 @@ public class EntryPoint : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         _elementOfFieldFactory = new ElementOfFieldFactory(_sand, _spice, _worm, _solders, _water, _bait, _rocket, _enemy1, _enemy2);
         _stateMachine = new StateMachine();
-        _stateMachine.AddState(this, new InitializationState(_stateMachine, _elementOfFieldFactory, _tile, _line, _particles));
+        _stateMachine.AddState(this, new InitializationState(_stateMachine, _elementOfFieldFactory, _tile, _line, _particles, _gameArea));
     }
 
     private void Start()

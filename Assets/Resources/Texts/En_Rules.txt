@@ -1,0 +1,5 @@
+You play as a smuggler of the planet Arrakis.
+   The main goal of the game is to extract spice from three or more identical elements (1)sand and (2)spice by connecting them in one chain and forming a match.
+   There are two types of enemies in the game: (3)Harkonnens - every five matches capture and control the territory with which you can not interact, (4)Worms - occupy one cell of the territory of the playing field. To rid the territory of the enemy you should press the cell with the LKM, provided that you have a bonus that allows you to do this, (5)bomb for Harkonnens, (6)trap and (7)water for Worms. The (3)Harkonnen soldiers and the territories they capture are also disposed of by the neighboring cells involved in the match that took place.
+   Each match takes away a certain amount of (7)water according to the formula number of elements in the match minus four.
+   If there is no water(7) available, you cannot make a match. The smugglers' market allows you to replenish both water and the other two bonuses.

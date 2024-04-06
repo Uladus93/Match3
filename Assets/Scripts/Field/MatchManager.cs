@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.InputSystem.InputAction;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.XR;
 
 public class MatchManager
 {
@@ -22,16 +23,17 @@ public class MatchManager
         _playerSessionData = playerSessionData;
     }
 
-    public void GenerateMatchPerformed()
+    public void GenerateMatchPerformed(Vector2 call)
     {
         if (_playerSessionData.AquaScore > 0)
         {
             Tuple<Vector2, Vector2, Tuple<float, float>> fieldCoordinates = _parentField.DetectFieldCoordinatesOnTheScreen();
-            Vector3 currentMousePosition = Camera.main.ScreenToViewportPoint(Mouse.current.position.value);
+            Vector3 currentMousePosition = Camera.main.ScreenToWorldPoint(call);
+
             if (IsCursorOnTheField())
             {
                 FieldPosition tilePosition = determinateTileCoordinates();
-                Vector3 elementInTile = Camera.main.WorldToViewportPoint(_parentField.Tiles[tilePosition.Column, tilePosition.Row].TileObject.transform.position);
+                Vector3 elementInTile = _parentField.Tiles[tilePosition.Column, tilePosition.Row].TileObject.transform.position;
                 if (_match.Count == 0 && 
                     isCursorNearCenterOfTile() && 
                     _parentField.Tiles[tilePosition.Column, tilePosition.Row].ElementOfField.ElementType == TypesOfFieldElements.Enemy)
@@ -92,7 +94,6 @@ public class MatchManager
                     else { return false; }
                 }
             }
-
             bool IsCursorOnTheField()
             {
                 if (currentMousePosition.x > fieldCoordinates.Item1.x && currentMousePosition.x < fieldCoordinates.Item2.x &&
@@ -139,9 +140,9 @@ public class MatchManager
         else if (_match.Count > 2)
         {
             MakeMatch();
-            DetectEnemy();
             CountEmptyTiles();
             _parentField.FieldObjectGenerator.CreateSomeObjects(_emptyTiles);
+            DetectEnemy();
             _emptyTiles.Clear();
         }
         else

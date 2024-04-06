@@ -1,0 +1,5 @@
+ Arrakis gezegeninde bir kaçakçı olarak oynuyorsunuz.
+   Oyunun ana amacı, üç veya daha fazla özdeş elementten (1) kum ve (2) baharatı bir zincir halinde bağlayarak ve bir eşleşme oluşturarak baharat çıkarmaktır.
+   Oyunda iki tür düşman vardır: (3)Harkonnenler - her beş maçta bir etkileşime giremeyeceğiniz bölgeleri ele geçirir ve kontrol eder, (4)Solucanlar - oyun alanının bir hücresini işgal eder. Düşman bölgesinden kurtulmak için, bunu yapmanıza izin veren bir bonusunuz olması koşuluyla, LKM ile hücreye basmalısınız, Harkonnenler için (5) bomba, Solucanlar için (6) tuzak ve (7) su. (3)Harkonnen askerleri ve ele geçirdikleri bölgeler de gerçekleşen maça dahil olan komşu hücreler tarafından imha edilir.
+   Her maç, maçtaki element sayısı eksi dört formülüne göre belirli miktarda (7)su götürür.
+   Eğer hiç su(7) yoksa, bir eşleşme yapılamaz. Kaçakçı pazarı hem suyu hem de diğer iki bonusu yenilemenizi sağlar.

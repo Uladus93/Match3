@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Tile
 {
@@ -12,7 +13,7 @@ public class Tile
     private const float _koefficientOfSelectedTile = 1.1f;
     private Particles _particles;
     private SoundManager _soundManager;
-    private Color _openTileColor = new((230f/255f), 200f/255f, 150f/255f);
+    private Color _openTileColor = Color.white;
 
     public GameObject TileObject { get { return _tileObject;} private set { } }
     public TilesState TileType { get { return _tileType; } private set { } }
@@ -80,7 +81,7 @@ public class Tile
         {
             _soundManager.PlayOpenTileSound();
             _tileType = TilesState.open;
-            _tileObject.GetComponent<SpriteRenderer>().color = _openTileColor;
+            _tileObject.GetComponent<Image>().color = _openTileColor;
         }
     }
 
@@ -89,7 +90,7 @@ public class Tile
         if (_tileType == TilesState.open)
         {
             _tileType = TilesState.closed;
-            _tileObject.GetComponent<SpriteRenderer>().color = Color.red;
+            _tileObject.GetComponent<Image>().color = Color.red;
         }
     }
 

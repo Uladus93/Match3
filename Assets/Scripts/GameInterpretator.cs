@@ -6,12 +6,12 @@ public class GameInterpretator : MonoBehaviour
     private Controller _controller;
     private Field _gameField;
     private sbyte _pause;
+    private Vector2 _currentPosition => _controller.PlayMode.TokenInterpretator.ReadValue<Vector2>();
 
     private void Awake()
     {
         _controller = new Controller();
         _pause = 0;
-
     }
 
     private void OnEnable()
@@ -37,14 +37,14 @@ public class GameInterpretator : MonoBehaviour
 
     public void SetActionOnCancelClick()
     {
-        _controller.PlayMode.TokenInterpretator.canceled += _gameField.MatchManager.GenerateMatchCanceled;
+        _controller.PlayMode.Press.canceled += _gameField.MatchManager.GenerateMatchCanceled;
     }
 
     private void Update()
     {
-        if (Mouse.current.leftButton.isPressed && _pause == 0)
+        if (_pause == 0 && _controller.PlayMode.Press.phase == InputActionPhase.Performed)
         {
-            _gameField.MatchManager.GenerateMatchPerformed();
+            _gameField.MatchManager.GenerateMatchPerformed(_currentPosition);
         }
     }
 

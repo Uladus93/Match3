@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4593121120327333197}
   - component: {fileID: 3253511107642805417}
-  - component: {fileID: -6548713748634948165}
+  - component: {fileID: 5451724456115931068}
   m_Layer: 0
   m_Name: Spice Token Image
   m_TagString: Untagged
@@ -45,7 +45,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2771778798791307461}
   m_CullTransparentMesh: 1
---- !u!212 &-6548713748634948165
+--- !u!212 &5451724456115931068
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -65,7 +65,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -91,7 +91,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 3.21, y: 3.21}
+  m_Size: {x: 91.81818, y: 91.81818}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

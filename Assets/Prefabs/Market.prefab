@@ -217,8 +217,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: X 1 = 1
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a90d557187f4d61489d644b7c6e05f2d, type: 2}
+  m_sharedMaterial: {fileID: 4375557411139348790, guid: a90d557187f4d61489d644b7c6e05f2d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -351,8 +351,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: X 2 = 1
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a90d557187f4d61489d644b7c6e05f2d, type: 2}
+  m_sharedMaterial: {fileID: 4375557411139348790, guid: a90d557187f4d61489d644b7c6e05f2d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -430,6 +430,7 @@ GameObject:
   - component: {fileID: 5463756387731306591}
   - component: {fileID: 2675553930905947119}
   - component: {fileID: 3563318007523532835}
+  - component: {fileID: 2309198728003868958}
   m_Layer: 5
   m_Name: Market
   m_TagString: Untagged
@@ -538,19 +539,26 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2675553930905947119}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2961465335239616626}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &2309198728003868958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 905682293288802719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2afb89e95cb44e4c832d90ab0db7bd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _waterForReclam: {fileID: 8311204862088441766}
+  _rocketForReclam: {fileID: 2319672903074734394}
+  _baitForReclam: {fileID: 6910367034190033073}
+  _waterForYans: {fileID: 0}
+  _rocketForYans: {fileID: 0}
+  _baitForYans: {fileID: 0}
+  _multiBonusesForYans: {fileID: 0}
 --- !u!1 &1471911035580025668
 GameObject:
   m_ObjectHideFlags: 0
@@ -866,7 +874,7 @@ GameObject:
   - component: {fileID: 8664140956106939352}
   - component: {fileID: 3076717847355227843}
   - component: {fileID: 3181943016039313942}
-  - component: {fileID: 7480389989255555625}
+  - component: {fileID: 2319672903074734394}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -975,7 +983,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &7480389989255555625
+--- !u!114 &2319672903074734394
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -984,7 +992,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2170655959832555917}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3fd206c993e11449b50465eebe5fcec, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e1394453a160f3409453898a49f1b01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2210227694616787087
@@ -1222,7 +1230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3719517867659944325}
   - component: {fileID: 6126983752582368552}
-  - component: {fileID: 401871989705015180}
+  - component: {fileID: 2586508108002007179}
   m_Layer: 5
   m_Name: Market Panel
   m_TagString: Untagged
@@ -1240,7 +1248,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8987753094036288471}
   - {fileID: 5977511983687286758}
@@ -1264,7 +1272,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2961465335239616626}
   m_CullTransparentMesh: 1
---- !u!114 &401871989705015180
+--- !u!114 &2586508108002007179
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1306,7 +1314,7 @@ GameObject:
   - component: {fileID: 2469490194242728729}
   - component: {fileID: 5850324586833607038}
   - component: {fileID: 3107067594526430914}
-  - component: {fileID: 3162427448106656813}
+  - component: {fileID: 4227006330877571843}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -1415,7 +1423,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &3162427448106656813
+--- !u!114 &4227006330877571843
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1427,7 +1435,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc25f8d9c92f3e34ebee824a8b3c9292, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _market: {fileID: 905682293288802719}
 --- !u!1 &4136670541542617645
 GameObject:
   m_ObjectHideFlags: 0
@@ -1596,7 +1603,7 @@ GameObject:
   - component: {fileID: 2372493802963924643}
   - component: {fileID: 7618734178832596487}
   - component: {fileID: 7570412368759532956}
-  - component: {fileID: 7373898432063112270}
+  - component: {fileID: 8311204862088441766}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -1705,7 +1712,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &7373898432063112270
+--- !u!114 &8311204862088441766
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1714,7 +1721,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4830069601869749022}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0850ce4659440ef458fc3b1c40090fba, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e1394453a160f3409453898a49f1b01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4860654178019965586
@@ -1784,8 +1791,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: X 3 = 2
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a90d557187f4d61489d644b7c6e05f2d, type: 2}
+  m_sharedMaterial: {fileID: 4375557411139348790, guid: a90d557187f4d61489d644b7c6e05f2d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1809,7 +1816,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 71.45
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1918,8 +1925,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: X 2 = 1
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a90d557187f4d61489d644b7c6e05f2d, type: 2}
+  m_sharedMaterial: {fileID: 4375557411139348790, guid: a90d557187f4d61489d644b7c6e05f2d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2052,8 +2059,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: X 17 = 10
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a90d557187f4d61489d644b7c6e05f2d, type: 2}
+  m_sharedMaterial: {fileID: 4375557411139348790, guid: a90d557187f4d61489d644b7c6e05f2d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2077,7 +2084,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 63.6
+  m_fontSize: 60.8
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2186,8 +2193,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: X 3 = 2
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a90d557187f4d61489d644b7c6e05f2d, type: 2}
+  m_sharedMaterial: {fileID: 4375557411139348790, guid: a90d557187f4d61489d644b7c6e05f2d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2211,7 +2218,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 71.45
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2401,8 +2408,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: X 1 = 1
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a90d557187f4d61489d644b7c6e05f2d, type: 2}
+  m_sharedMaterial: {fileID: 4375557411139348790, guid: a90d557187f4d61489d644b7c6e05f2d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2480,7 +2487,6 @@ GameObject:
   - component: {fileID: 4220016109023445178}
   - component: {fileID: 4400582457903093645}
   - component: {fileID: 2205993136476295528}
-  - component: {fileID: 3684712643834265452}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -2589,18 +2595,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &3684712643834265452
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6859787946668963837}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef5bbfe63df58ea479992a4cc6fc95cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6882221529127475852
 GameObject:
   m_ObjectHideFlags: 0
@@ -2919,7 +2913,6 @@ GameObject:
   - component: {fileID: 187411962288061301}
   - component: {fileID: 3409888330112389641}
   - component: {fileID: 8997601132539541362}
-  - component: {fileID: 5627327083499488115}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -3028,18 +3021,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &5627327083499488115
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7365807109857145571}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a09607e31f121c54b838cc7724ca5d42, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7370706709696378156
 GameObject:
   m_ObjectHideFlags: 0
@@ -3052,7 +3033,7 @@ GameObject:
   - component: {fileID: 6925250637228463353}
   - component: {fileID: 3303324978454150031}
   - component: {fileID: 6177036496720101541}
-  - component: {fileID: 7954402949935689554}
+  - component: {fileID: 6910367034190033073}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -3161,7 +3142,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &7954402949935689554
+--- !u!114 &6910367034190033073
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3170,7 +3151,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7370706709696378156}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfef7c3d533816d47b0c0cd6d5fb41a5, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e1394453a160f3409453898a49f1b01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7421302633548830656
@@ -3185,7 +3166,6 @@ GameObject:
   - component: {fileID: 4989278828011180696}
   - component: {fileID: 8805500618413365501}
   - component: {fileID: 55203935045120573}
-  - component: {fileID: 4580519885165436568}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -3294,18 +3274,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &4580519885165436568
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7421302633548830656}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbed59ded7253644a947bc67923cf1ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8522701646997591187
 GameObject:
   m_ObjectHideFlags: 0

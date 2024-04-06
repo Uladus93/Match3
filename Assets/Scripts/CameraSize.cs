@@ -2,19 +2,23 @@ using UnityEngine;
 
 public class CameraSize : MonoBehaviour
 {
-    private float _size;
     void Start()
+    {
+        SetCameraSize();
+    }
+
+    private void Update()
     {
         SetCameraSize();
     }
 
     private void SetCameraSize()
     {
+
         float targetaspect = 16.0f / 9.0f;
         float windowaspect = (float)Screen.width / (float)Screen.height;
         float scaleheight = windowaspect / targetaspect;
         Camera camera = GetComponent<Camera>();
-
         if (scaleheight < 1.0f)
         {
             Rect rect = camera.rect;
