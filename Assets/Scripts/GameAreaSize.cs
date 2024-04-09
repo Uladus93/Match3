@@ -20,7 +20,7 @@ public class GameAreaSize : MonoBehaviour
 
     public void SetGameAreaSize()
     {
-        float targetaspect = 16.0f / 9.0f;
+        float targetaspect = 18.0f / 11.0f;
         float windowaspect = (float)Screen.width / (float)Screen.height;
         float scaleheight = windowaspect / targetaspect;
         if (scaleheight < 1.0f)

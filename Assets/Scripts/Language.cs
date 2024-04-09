@@ -12,8 +12,6 @@ public class Language : MonoBehaviour
     private void Awake()
     {
         _currentLanguage = GetLanguage();
-        
-        //_interText.SetLanguage("en");
     }
 
     private void Start()

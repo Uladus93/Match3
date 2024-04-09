@@ -93,10 +93,10 @@ public class InitializationState : IGameState
         _stateMachine.AddState(this, new PlayGameState(_stateMachine, gameField, playerSessionData));
         _stateMachine.AddState(this, new ReloadGameState(_stateMachine, gameField, playerSessionData));
 
-        int windowDataChildCount = _settingsButton.transform.childCount;
+        int windowDataChildCount = _settingsButton.transform.GetChild(0).transform.childCount;
         for (int i = 0; i < windowDataChildCount; i++)
         {
-            GameObject childObject = _settingsButton.transform.GetChild(i).gameObject;
+            GameObject childObject = _settingsButton.transform.GetChild(0).transform.GetChild(i).gameObject;
             if (childObject.name == "Restart Button")
             {
                 childObject.GetComponent<Button>().onClick.AddListener(() => _stateMachine.TransitionToState(typeof(ReloadGameState)));

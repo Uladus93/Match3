@@ -161,8 +161,8 @@ MonoBehaviour:
   _bait: {fileID: 569299112786162431, guid: 259051ef89f61d447a7df44cc1419f4d, type: 3}
   _rocket: {fileID: 569299112786162431, guid: dd6c6b6d3cd9bc14e9e78a7ec9376c4d, type: 3}
   _line: {fileID: 2648449472936254029, guid: 1f21c015fa3389648912d73a463802bf, type: 3}
-  _enemy1: {fileID: 21300000, guid: 8203e1d501c26ed408b33d8d512862e8, type: 3}
-  _enemy2: {fileID: 21300000, guid: b60a1dfaa4357d44ea0bb5a402698259, type: 3}
+  _enemy1: {fileID: 21300000, guid: 6434dce89e21f294580fd973a53db38e, type: 3}
+  _enemy2: {fileID: 21300000, guid: 78a6c13ffbaa54140ab7db11d8740d1e, type: 3}
   _particles: {fileID: 6315274941694980814, guid: 6dc11c179e71723419e40d44c206fb96, type: 3}
   _gameArea: {fileID: 864047800556532265, guid: 345b371dcabd2a644943fb68cef36f16, type: 3}
 --- !u!4 &520140549
