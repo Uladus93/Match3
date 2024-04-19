@@ -16,7 +16,6 @@ public class PlayerScore : MonoBehaviour
     private PlayerJSONScore _playerScore;
     private Field _field;
     private PlayerSessionData _sessionData;
-    private float _time = 0;
     public PlayerJSONScore PlayerJSONScore { get { return _playerScore; } private set { } }
 
     private void Awake()
@@ -32,10 +31,9 @@ public class PlayerScore : MonoBehaviour
         _playerScore._tiles = criptoTiles();
         string jsonString = JsonUtility.ToJson(_playerScore);
         SavePlayerScore(jsonString);
-
+        SetToLeaderboard(_sessionData.SpiceScore);
         string[] criptoTiles()
         {
-
             List<string> tiles = new List<string>();
             for (byte i = 0; i < _field.RowCount; i++)
             {
@@ -155,9 +153,8 @@ public class PlayerScore : MonoBehaviour
 
     public void LoadFromJson(string score)
     {
-#if UNITY_WEBGL
         _playerScore = JsonUtility.FromJson<PlayerJSONScore>(score);
-        if (_playerScore._spiceScore != 0)
+        if (_playerScore._spiceScore != 0 || _playerScore._aquaScore != 10 || _playerScore._rocketsScore != 15 || _playerScore._baitsScore != 10)
         {
             _sessionData.LoadData();
         }
@@ -174,12 +171,6 @@ public class PlayerScore : MonoBehaviour
         {
             _field.FieldObjectGenerator.CreateAllNewField(_field.Tiles);
         }
-#endif
-#if UNITY_EDITOR
-        _sessionData.RefreshData();
-        _field.FieldObjectGenerator.CreateAllNewField(_field.Tiles);
-#endif
-
     }
 
     public void SetDataForJSON(Field field, PlayerSessionData playerSessionData)
@@ -188,17 +179,10 @@ public class PlayerScore : MonoBehaviour
         _sessionData = playerSessionData;
     }
 
-    private void Update()
+    public void CreateNewGame()
     {
-#if UNITY_WEBGL
-        _time += Time.deltaTime;
-        if (_time >= 60)
-        {
-            SaveToJson();
-            SetToLeaderboard(_sessionData.SpiceScore);
-            _time = 0;
-        }
-#endif
+        _sessionData.RefreshData();
+        _field.FieldObjectGenerator.CreateAllNewField(_field.Tiles);
     }
 }
 

@@ -71,6 +71,7 @@ public class Market : MonoBehaviour
         {
             _baitForReclam._addSomeBonuses(_baitForReclam.Cost);
         }
+        _playerSessionData.PlayerScore.SaveToJson();
     }
 
     public void PlusSomeBonusesForYans(int points)
@@ -91,5 +92,6 @@ public class Market : MonoBehaviour
         {
             _multiBonusesForYans._addSomeBonuses(_multiBonusesForYans.Cost);
         }
+        _playerSessionData.PlayerScore.SaveToJson();
     }
 }

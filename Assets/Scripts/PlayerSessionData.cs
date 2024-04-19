@@ -21,6 +21,8 @@ public class PlayerSessionData
     public int SpiceScore { get { return _spiceScore; } private set { } }
     public int BaitsScore { get { return _baitsScore; } private set { } }
     public int RocketsScore { get { return _rocketsScore; } private set { } }
+
+    public PlayerScore PlayerScore { get { return _playerScore; } private set { } }
     public PlayerSessionData(GameObject aqua, GameObject score, GameObject baits, GameObject rocket, PlayerScore playerScore)
     {
         _aqua = aqua;

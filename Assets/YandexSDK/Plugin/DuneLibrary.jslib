@@ -26,11 +26,19 @@ mergeInto(LibraryManager.library, {
   },
 
   LoadPlayerData: function () {
-    player.getData().then(_date => {
+	  if (player.getMode() != 'lite')
+	  {
+		  player.getData().then(_date => {
       const myJSON = JSON.stringify(_date);
       myGameInstance.SendMessage('PlayerScore', 'LoadFromJson', myJSON);
-      console.log(myJSON);
-    })
+    });
+	  }
+	  else if (player.getMode() === 'lite') {
+		  player.getData().then(_date => {
+      const myJSON = JSON.stringify(_date);
+        myGameInstance.SendMessage('PlayerScore', 'LoadFromJson', myJSON);
+	  });
+	  }
   },
   
   SetToLeaderboard: function (value) {
@@ -119,4 +127,16 @@ mergeInto(LibraryManager.library, {
     })
   },
   
+  Authorization: function () {
+	  console.log('Authorization!!!');
+	  authorisation();
+	  initLeaderBoard();
+	  initPayments();
+  },
+  
+  SaveGame: function () {
+	  console.log('Save!!!');
+	  myGameInstance.SendMessage('PlayerScore', 'SaveToJson');
+  },
+
 });

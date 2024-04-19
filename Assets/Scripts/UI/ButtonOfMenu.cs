@@ -8,13 +8,19 @@ public class ButtonOfMenu : MonoBehaviour
     [DllImport("__Internal")]
     private static extern void RateTheGame();
 
+    [DllImport("__Internal")]
+    private static extern void Authorization();
+
+    [DllImport("__Internal")]
+    private static extern void SaveGame();
+
     [SerializeField] private GameObject _menu;
     [SerializeField] private GameObject _estimationButton;
+    [SerializeField] private GameObject _authorizationButton;
+    [SerializeField] private GameObject _saveButton;
     private GameInterpretator _interpretator;
     private bool _enabled;
     private bool _stay;
-
-    public GameObject EstimationButton { get { return _estimationButton; } private set { } }
 
     private void Start()
     {
@@ -22,6 +28,8 @@ public class ButtonOfMenu : MonoBehaviour
         _stay = true;
         gameObject.GetComponent<Button>().onClick.AddListener(() => StartCoroutine(ActivateMenu()));
         _estimationButton.GetComponent<Button>().onClick.AddListener(() => RateGameButton());
+        _authorizationButton.GetComponent<Button>().onClick.AddListener(() => AuthorizationButton());
+        _saveButton.GetComponent<Button>().onClick.AddListener(() => SaveThisGame());
     }
 
     private IEnumerator ActivateMenu()
@@ -77,5 +85,15 @@ public class ButtonOfMenu : MonoBehaviour
     public void RateGameButton()
     {
         RateTheGame();
+    }
+
+    public void AuthorizationButton()
+    {
+        Authorization();
+    }
+
+    public void SaveThisGame()
+    {
+        SaveGame();
     }
 }

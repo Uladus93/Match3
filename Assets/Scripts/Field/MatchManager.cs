@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.InputSystem.InputAction;
-using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.XR;
 
 public class MatchManager
 {
@@ -136,6 +134,7 @@ public class MatchManager
             }
             
             _match.RemoveAt(0);
+            _playerSessionData.PlayerScore.SaveToJson();
         }
         else if (_match.Count > 2)
         {
@@ -144,6 +143,7 @@ public class MatchManager
             _parentField.FieldObjectGenerator.CreateSomeObjects(_emptyTiles);
             DetectEnemy();
             _emptyTiles.Clear();
+            _playerSessionData.PlayerScore.SaveToJson();
         }
         else
         {
