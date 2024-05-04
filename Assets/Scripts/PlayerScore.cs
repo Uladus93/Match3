@@ -13,6 +13,9 @@ public class PlayerScore : MonoBehaviour
     [DllImport("__Internal")]
     private static extern void SetToLeaderboard(int spiceScore);
 
+    [DllImport("__Internal")]
+    public static extern void CheckPurchase();
+
     private PlayerJSONScore _playerScore;
     private Field _field;
     private PlayerSessionData _sessionData;
@@ -154,7 +157,7 @@ public class PlayerScore : MonoBehaviour
     public void LoadFromJson(string score)
     {
         _playerScore = JsonUtility.FromJson<PlayerJSONScore>(score);
-        if (_playerScore._spiceScore != 0 || _playerScore._aquaScore != 10 || _playerScore._rocketsScore != 15 || _playerScore._baitsScore != 10)
+        if (_playerScore._spiceScore != 0 || _playerScore._aquaScore != 0 || _playerScore._rocketsScore != 0 || _playerScore._baitsScore != 0)
         {
             _sessionData.LoadData();
         }
@@ -184,6 +187,7 @@ public class PlayerScore : MonoBehaviour
         _sessionData.RefreshData();
         _field.FieldObjectGenerator.CreateAllNewField(_field.Tiles);
     }
+
 }
 
 [System.Serializable]

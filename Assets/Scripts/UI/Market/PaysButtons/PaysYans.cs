@@ -44,7 +44,6 @@ public class PaysYans : MonoBehaviour
         }
         else if (_cost == 200)
         {
-            Debug.Log("Multi");
             MultiplyYans(_cost);
         }
     }

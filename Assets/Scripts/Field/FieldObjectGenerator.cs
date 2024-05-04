@@ -24,7 +24,7 @@ public class FieldObjectGenerator
                 _elementfactory.CreateElement(this, tiles[j, i]);
             }
         }
-
+        PlayerScore.CheckPurchase();
         return tiles;
     }
 

@@ -80,16 +80,14 @@ public class InitializationState : IGameState
         _tileFactory = new TileFactory(_tile, _fieldObject, _particles.GetComponent<Particles>(), _soundManager.GetComponent<SoundManager>());
         _tilesLine = GameObject.Instantiate(_line, new Vector3(0, 0, 0), Quaternion.identity, _fieldObject.transform);
         GameObject PlayerScoreJSONData = GameObject.Find("PlayerScore");
-        PlayerSessionData playerSessionData = new PlayerSessionData(_water, _score, _baits, _rockets, PlayerScoreJSONData.GetComponent<PlayerScore>());
+        PlayerSessionData playerSessionData = new PlayerSessionData(playerData, _water, _score, _baits, _rockets, PlayerScoreJSONData.GetComponent<PlayerScore>());
         Field gameField = new Field(_tileFactory, _elementOfFieldFactory, _tilesLine, _fieldObject, playerSessionData);
         PlayerScoreJSONData.GetComponent<PlayerScore>().SetDataForJSON(gameField, playerSessionData);
-#if UNITY_WEBGL
-        PlayerScoreJSONData.GetComponent<PlayerScore>().LoadGame();
-#endif
         //playerSessionData.RefreshData();
         //gameField.FieldObjectGenerator.CreateAllNewField(gameField.Tiles);
         interpretator.GetComponent<GameInterpretator>().SetField(gameField);
         _shop.GetComponent<Market>().SetMarketData(interpretator.GetComponent<GameInterpretator>(), playerSessionData);
+        
         _stateMachine.AddState(this, new PlayGameState(_stateMachine, gameField, playerSessionData));
         _stateMachine.AddState(this, new ReloadGameState(_stateMachine, gameField, playerSessionData));
 
@@ -102,6 +100,7 @@ public class InitializationState : IGameState
                 childObject.GetComponent<Button>().onClick.AddListener(() => _stateMachine.TransitionToState(typeof(ReloadGameState)));
             }
         }
+        PlayerScoreJSONData.GetComponent<PlayerScore>().LoadGame();
         _stateMachine.TransitionToState(typeof(PlayGameState));
     }
 

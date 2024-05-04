@@ -12,6 +12,7 @@ public class PlayerSessionData
     private GameObject _baits;
     private GameObject _rockets;
     private PlayerScore _playerScore;
+    private GameObject _playerData;
 
     public TextMeshProUGUI AquaText { get { return _aqua.GetComponent<TextMeshProUGUI>(); } set { } }
     public TextMeshProUGUI ScoreText { get { return _score.GetComponent<TextMeshProUGUI>(); } set { } }
@@ -23,13 +24,15 @@ public class PlayerSessionData
     public int RocketsScore { get { return _rocketsScore; } private set { } }
 
     public PlayerScore PlayerScore { get { return _playerScore; } private set { } }
-    public PlayerSessionData(GameObject aqua, GameObject score, GameObject baits, GameObject rocket, PlayerScore playerScore)
+    public PlayerSessionData(GameObject playerData, GameObject aqua, GameObject score, GameObject baits, GameObject rocket, PlayerScore playerScore)
     {
+        _playerData = playerData;
         _aqua = aqua;
         _score = score;
         _baits = baits;
         _rockets = rocket;
         _playerScore = playerScore;
+        playerData.SetActive(false);
     }
 
     public void RecountWater(int points)
@@ -66,6 +69,7 @@ public class PlayerSessionData
         _score.GetComponent<TextMeshProUGUI>().text = $"{_spiceScore}";
         _baits.GetComponent<TextMeshProUGUI>().text = $"{_baitsScore}";
         _rockets.GetComponent<TextMeshProUGUI>().text = $"{_rocketsScore}";
+        _playerData.SetActive(true);
     }
 
     public void LoadData()
@@ -78,5 +82,6 @@ public class PlayerSessionData
         _score.GetComponent<TextMeshProUGUI>().text = $"{_spiceScore}";
         _baits.GetComponent<TextMeshProUGUI>().text = $"{_baitsScore}";
         _rockets.GetComponent<TextMeshProUGUI>().text = $"{_rocketsScore}";
+        _playerData.SetActive(true);
     }
 }

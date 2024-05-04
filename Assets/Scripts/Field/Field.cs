@@ -55,5 +55,6 @@ public class Field
     public void LoadFieldFromJSON(string[] jsonTiles)
     {
         _tiles = _fieldObjectGenerator.LoadAllFieldFromJSON(_tiles, jsonTiles);
+        PlayerScore.CheckPurchase();
     }
 }

@@ -7,16 +7,16 @@ using UnityEngine.Networking;
 
 public class YandexSDK : MonoBehaviour
 {
-    [DllImport("__Internal")]
-    private static extern void SetPlayerData();
+    //[DllImport("__Internal")]
+    //private static extern void SetPlayerData();
 
     [SerializeField] private TextMeshProUGUI _nameText;
     [SerializeField] private RawImage _avatarImage;
 
-    public void TEST()
-    {
-        SetPlayerData();
-    }
+    //public void TEST()
+    //{
+    //    SetPlayerData();
+    //}
 
     public void SetName(string name)
     {

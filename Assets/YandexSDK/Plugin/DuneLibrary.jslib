@@ -1,44 +1,51 @@
 mergeInto(LibraryManager.library, {
 
-  RateTheGame: function () {
-    ysdk.feedback.canReview()
-    .then(({ value, reason }) => {
-      if (value) {
-        ysdk.feedback.requestReview()
-        .then(({ feedbackSent }) => {
-          console.log(feedbackSent);
-        })
-      } else {
-        console.log(reason)
-      }
-    })
-  },
-
-  SetPlayerData: function () {
-    myGameInstance.SendMessage('YandexSDK', 'SetName', player.getName());
-    myGameInstance.SendMessage('YandexSDK', 'SetAvatar', player.getPhoto("medium"));
-  },
-
   SavePlayerScore: function (date) {
+	  console.log('SaveGAME!');
     var dateString = UTF8ToString(date);
     var myObj = JSON.parse(dateString);
     player.setData(myObj);
   },
+  
+
 
   LoadPlayerData: function () {
-	  if (player.getMode() != 'lite')
+	  
+	  if(player != null)
 	  {
-		  player.getData().then(_date => {
-      const myJSON = JSON.stringify(_date);
-      myGameInstance.SendMessage('PlayerScore', 'LoadFromJson', myJSON);
-    });
+				player.getData().then(_date => {
+				const myJSON = JSON.stringify(_date);
+				myGameInstance.SendMessage('PlayerScore', 'LoadFromJson', myJSON);});
 	  }
-	  else if (player.getMode() === 'lite') {
-		  player.getData().then(_date => {
-      const myJSON = JSON.stringify(_date);
-        myGameInstance.SendMessage('PlayerScore', 'LoadFromJson', myJSON);
-	  });
+	  else
+	  {
+		  myGameInstance.SendMessage('PlayerScore', 'CreateNewGame');
+		  myGameInstance.SendMessage('PlayerScore', 'SaveToJson');
 	  }
+  },
+  
+  CheckPurchase: function(){
+	  if(payments != null)
+				{
+					payments.getPurchases().then(purchases => purchases.forEach(consumePurchase));
+			
+					function consumePurchase(purchase) {
+						console.log(purchase);
+						if (purchase.productID === 'water') {
+							myGameInstance.SendMessage('Market', 'PlusSomeBonusesForYans', 17);
+						payments.consumePurchase(purchase.purchaseToken);}
+							if (purchase.productID === 'bombs') {
+							myGameInstance.SendMessage('Market', 'PlusSomeBonusesForYans', 15);
+							payments.consumePurchase(purchase.purchaseToken);}
+							if (purchase.productID === 'baits') {
+							myGameInstance.SendMessage('Market', 'PlusSomeBonusesForYans', 10);
+							payments.consumePurchase(purchase.purchaseToken);}
+							if (purchase.productID === 'multibonus') {
+							myGameInstance.SendMessage('Market', 'PlusSomeBonusesForYans', 200);
+							payments.consumePurchase(purchase.purchaseToken);
+							}
+					}
+				}
   },
   
   SetToLeaderboard: function (value) {
@@ -53,7 +60,6 @@ mergeInto(LibraryManager.library, {
     var bufferSize = lengthBytesUTF8(lang) + 1;
     var buffer = _malloc(bufferSize);
     stringToUTF8(lang, buffer, bufferSize);
-	console.log(buffer);
 	return buffer;
   },
   
@@ -80,58 +86,63 @@ mergeInto(LibraryManager.library, {
   },
   
   WaterYans: function (value) {
+	  if (payments != null)
+	  {
 		payments.purchase({ id: 'water' }).then(purchase => {
         // Покупка успешно совершена!
 		myGameInstance.SendMessage('Market', 'PlusSomeBonusesForYans', value);
-		  myGameInstance.SendMessage('PlayerScore', 'SaveToJson');
+		payments.consumePurchase(purchase.purchaseToken);
     }).catch(err => {
         // Покупка не удалась: в консоли разработчика не добавлен товар с таким id,
         // пользователь не авторизовался, передумал и закрыл окно оплаты,
         // истекло отведенное на покупку время, не хватило денег и т. д.
     })
+	  }
   },
   
   RocketsYans: function (value) {
+	  if (payments != null)
+	  {
 		payments.purchase({ id: 'bombs' }).then(purchase => {
         // Покупка успешно совершена!
 		myGameInstance.SendMessage('Market', 'PlusSomeBonusesForYans', value);
-		  myGameInstance.SendMessage('PlayerScore', 'SaveToJson');
+		payments.consumePurchase(purchase.purchaseToken);
     }).catch(err => {
         // Покупка не удалась: в консоли разработчика не добавлен товар с таким id,
         // пользователь не авторизовался, передумал и закрыл окно оплаты,
         // истекло отведенное на покупку время, не хватило денег и т. д.
     })
+	  }
   },
   
   BaitsYans: function (value) {
+	  if (payments != null)
+	  {
 		payments.purchase({ id: 'baits' }).then(purchase => {
         // Покупка успешно совершена!
 		myGameInstance.SendMessage('Market', 'PlusSomeBonusesForYans', value);
-		  myGameInstance.SendMessage('PlayerScore', 'SaveToJson');
+		payments.consumePurchase(purchase.purchaseToken);
     }).catch(err => {
         // Покупка не удалась: в консоли разработчика не добавлен товар с таким id,
         // пользователь не авторизовался, передумал и закрыл окно оплаты,
         // истекло отведенное на покупку время, не хватило денег и т. д.
     })
+	  }
   },
   
   MultiplyYans: function (value) {
-		payments.purchase({ id: 'multibonus' }).then(purchase => {
+	  if (payments != null)
+	  {
+		  payments.purchase({ id: 'multibonus' }).then(purchase => {
         // Покупка успешно совершена!
 		myGameInstance.SendMessage('Market', 'PlusSomeBonusesForYans', value);
-		  myGameInstance.SendMessage('PlayerScore', 'SaveToJson');
+		payments.consumePurchase(purchase.purchaseToken);
     }).catch(err => {
         // Покупка не удалась: в консоли разработчика не добавлен товар с таким id,
         // пользователь не авторизовался, передумал и закрыл окно оплаты,
         // истекло отведенное на покупку время, не хватило денег и т. д.
     })
-  },
-  
-  Authorization: function () {
-	  console.log('Authorization!!!');
-	  authorisation();
-	  initLeaderBoard();
-	  initPayments();
+	  }
   },
   
   SaveGame: function () {
